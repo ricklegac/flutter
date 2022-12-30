@@ -1,14 +1,15 @@
 //async 
 
-void main(){
+void main() async {
   print("a");
   //final data = await httpGet('aaa');
   // httpGet('aaa').then((data){
   //   print(data.toUpperCase());
   // });
-  final nombre = getNombre('20');
+  final nombre = await getNombre('20');
   print (nombre);
   print("b");
+  
 
 
   
