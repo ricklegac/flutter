@@ -11,8 +11,12 @@ class App extends StatelessWidget{
   //todos los stalesswidgets contienen un override
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home :  Center(child: Text ('Hola Mundo')),  //widget Text
+    return const MaterialApp( //MaterialApp es un widget
+      home : Center( //Center es un Widget
+
+        child:  Text ('Hola Mundo') // Text es un Widget
+        
+        ),  //widget Text
 
     );
   
