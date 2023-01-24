@@ -1,22 +1,22 @@
+import 'package:counter_app/screens/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main(){
-  runApp(App());
+  runApp(const App());
 
 }
 
 class App extends StatelessWidget{
+  const App({super.key}); //constructor de la clase 
+
 
   //todos los stalesswidgets contienen un override
   @override
   Widget build(BuildContext context) {
     return const MaterialApp( //MaterialApp es un widget
-      home : Center( //Center es un Widget
-
-        child:  Text ('Hola Mundo') // Text es un Widget
-        
-        ),  //widget Text
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen() //widget Text
 
     );
   
