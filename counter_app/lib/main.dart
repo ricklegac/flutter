@@ -1,3 +1,4 @@
+import 'package:counter_app/screens/counter_screen.dart';
 import 'package:counter_app/screens/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class App extends StatelessWidget{
   Widget build(BuildContext context) {
     return const MaterialApp( //MaterialApp es un widget
       debugShowCheckedModeBanner: false,
-      home: HomeScreen() //widget Text
+      home: CounterScreen() //widget Text
 
     );
   
