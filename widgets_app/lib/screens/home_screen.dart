@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+
+import 'package:widgets_app/screens/screens.dart';
 
 class HomeScreen extends StatelessWidget {
    
@@ -6,9 +7,21 @@ class HomeScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-         child: Text('HomeScreen'),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('home'),
+      ),
+      body: ListView.separated(
+        itemBuilder: (context, index) => ListTile(
+          leading: const Icon(Icons.ac_unit_sharp),
+          title: const Text('Rutas'),
+          onTap: () {
+            final route = MaterialPageRoute(builder: (context) => const Listview1Screen());
+            Navigator.push(context, route);
+          } ,  
+        ), 
+        separatorBuilder: (_,__)=>const Divider(), 
+        itemCount: 10, 
       ),
     );
   }

@@ -1,5 +1,6 @@
+ 
 
-import 'package:widgets_app/screens/home_screen.dart';
+import 'package:widgets_app/router/apps_routes.dart';
 
 import 'screens/screens.dart';
 
@@ -16,14 +17,16 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Material App',
      //home: const Listview2Screen(),
-      initialRoute: 'home',
-      routes: {
-        'home'      :(BuildContext context )=> const HomeScreen(),
-        'listview1' :(BuildContext context) => const Listview1Screen(),
-        'listview2' :(context) => const Listview2Screen(),
-        'alert'     :((context) => const AlertScreen()),
-        'card'      :(context) => const CardScreen(),
-      },
+      //initialRoute: 'home',
+      initialRoute: AppRoutes.initialRoute, // se agregan las rutas de la Class AppRoutes
+      // routes: {
+      //   'home'      :(BuildContext context )=> const HomeScreen(),
+      //   'listview1' :(BuildContext context) => const Listview1Screen(),
+      //   'listview2' :(context) => const Listview2Screen(),
+      //   'alert'     :((context) => const AlertScreen()),
+      //   'card'      :(context) => const CardScreen(),
+      // },
+      routes: AppRoutes.routes,
   );
   }
 }
