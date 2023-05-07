@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       //   'alert'     :((context) => const AlertScreen()),
       //   'card'      :(context) => const CardScreen(),
       // },
-      routes: AppRoutes.routes,
+      routes:  AppRoutes.getAppRoutes() ,
   );
   }
 }

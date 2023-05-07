@@ -1,4 +1,5 @@
 
+import 'package:widgets_app/router/apps_routes.dart';
 import 'package:widgets_app/screens/screens.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,21 +8,22 @@ class HomeScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text('home'),
       ),
       body: ListView.separated(
         itemBuilder: (context, index) => ListTile(
-          leading: const Icon(Icons.ac_unit_sharp),
-          title: const Text('Rutas'),
+          leading: Icon(AppRoutes.menuOption[index].icon, color: Colors.blue),
+          title: Text(AppRoutes.menuOption[index].name),
           onTap: () {
-            final route = MaterialPageRoute(builder: (context) => const Listview1Screen());
+            final route = MaterialPageRoute(builder: (context) => AppRoutes.menuOption[index].screen);
             Navigator.push(context, route);
           } ,  
         ), 
         separatorBuilder: (_,__)=>const Divider(), 
-        itemCount: 10, 
+        itemCount: AppRoutes.menuOption.length, 
       ),
     );
   }
