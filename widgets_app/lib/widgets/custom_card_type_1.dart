@@ -11,13 +11,32 @@ class CustomCardType1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child:  Column(
-        children: const [
-           ListTile(
+        children:  [
+           const ListTile(
             leading: Icon(Icons.photo_album_sharp, color: AppTheme.primary),
             title:  Text('titulo cualquiera'),
             subtitle: Text('adasjkdasbdjaksdasd'),
-          )
+          ),
+        Padding(
+          padding: const EdgeInsets.only(right: 8),
+          
+          child: Row( //row no puede ser constante porque se actualiza segun la pantalla y demas
+            mainAxisAlignment: MainAxisAlignment.end, 
+            children: [
+              TextButton(
+                onPressed:() {}, 
+                child: const Text('cancel'),
+                style: TextButton.styleFrom(primary: Colors.red),
+              ),
+              TextButton(
+                onPressed: () {}, 
+                child: const Text('ok'),
+              )
+            ],
+          ),
+        )
         ],
+        
         )
     );
   }
