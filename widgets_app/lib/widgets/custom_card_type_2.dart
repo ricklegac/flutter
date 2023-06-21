@@ -8,10 +8,12 @@ class CustomCardType2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      clipBehavior: Clip.antiAlias,
       elevation: 10,
       child: Column(
         children:  [
            const FadeInImage(
+            
             placeholder: AssetImage('assets/jar-loading.gif'), 
             image:  NetworkImage('https://hips.hearstapps.com/hmg-prod/images/ballooning-pink-sky-rcg2wh-1531753930.jpg?crop=1xw:1xh;center,top&resize=980:*'),
             width: double.infinity,       
