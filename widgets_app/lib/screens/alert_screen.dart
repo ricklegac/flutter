@@ -20,7 +20,7 @@ class AlertScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         
         onPressed: () {
-
+          Navigator.pop(context);
         },
         child: const Icon(Icons.close),
         
