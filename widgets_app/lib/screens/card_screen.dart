@@ -17,7 +17,9 @@ class CardScreen extends StatelessWidget {
         padding:const  EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         children:  const [
           CustomCardType1(),
+          SizedBox(height: 20),
           CustomCardType2(imageUrl: 'https://cloudfront.slrlounge.com/wp-content/uploads/2020/06/best-landscape-photographers-to-follow-in-2020-1200x675.jpg',),
+          SizedBox(height: 20),
           CustomCardType2(name:'este si tene texto',imageUrl: 'https://cloudfront.slrlounge.com/wp-content/uploads/2020/06/best-landscape-photographers-to-follow-in-2020-1200x675.jpg',),
          ],
       ),

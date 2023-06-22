@@ -27,12 +27,14 @@ class CustomCardType2 extends StatelessWidget {
             height: 230,  
             fit: BoxFit.cover,   
             ),
+            if (name != null)
             Container(
               alignment: Alignment.centerRight,
               padding: const EdgeInsets.only(right: 20, top: 10),
               child: Text(name ?? 'no tiene texto'),
 
             ),
+            
         ],
       ),
     );
