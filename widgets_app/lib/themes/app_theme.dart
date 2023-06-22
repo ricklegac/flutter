@@ -9,12 +9,12 @@ class AppTheme{
           color: Colors.indigo,
           elevation: 0,
         ),
-    elevatedButtonTheme: ElevatedButtonTheme(
+    elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         primary: Colors.indigo,
-        elevation: 0,
-      )
+        shape: const StadiumBorder(),
+        elevation: 0
+      ),  
     ),
    );
-   
 }
