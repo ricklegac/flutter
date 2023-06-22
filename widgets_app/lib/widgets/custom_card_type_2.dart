@@ -3,7 +3,15 @@ import 'package:flutter/material.dart';
 
 
 class CustomCardType2 extends StatelessWidget {
-  const CustomCardType2({super.key});
+  final String imageUrl;
+  final String? name;
+  const CustomCardType2(
+    {
+      super.key, 
+      required this.imageUrl,
+      this.name,
+    }
+    );
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +20,9 @@ class CustomCardType2 extends StatelessWidget {
       elevation: 10,
       child: Column(
         children:  [
-           const FadeInImage(
-            
-            placeholder: AssetImage('assets/jar-loading.gif'), 
-            image:  NetworkImage('https://hips.hearstapps.com/hmg-prod/images/ballooning-pink-sky-rcg2wh-1531753930.jpg?crop=1xw:1xh;center,top&resize=980:*'),
+            FadeInImage(
+            placeholder: const AssetImage('assets/jar-loading.gif'), 
+            image:  NetworkImage(imageUrl),
             width: double.infinity,       
             height: 230,  
             fit: BoxFit.cover,   
@@ -23,7 +30,7 @@ class CustomCardType2 extends StatelessWidget {
             Container(
               alignment: Alignment.centerRight,
               padding: const EdgeInsets.only(right: 20, top: 10),
-              child: const Text('texto cualquiera'),
+              child: Text(name ?? 'no tiene texto'),
 
             ),
         ],

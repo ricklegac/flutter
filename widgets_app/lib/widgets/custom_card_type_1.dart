@@ -19,14 +19,13 @@ class CustomCardType1 extends StatelessWidget {
           ),
         Padding(
           padding: const EdgeInsets.only(right: 8),
-          
           child: Row( //row no puede ser constante porque se actualiza segun la pantalla y demas
             mainAxisAlignment: MainAxisAlignment.end, 
             children: [
               TextButton(
-                onPressed:() {}, 
+                onPressed:() {},
+                style: TextButton.styleFrom(primary: Colors.red), 
                 child: const Text('cancel'),
-                style: TextButton.styleFrom(primary: Colors.red),
               ),
               TextButton(
                 onPressed: () {}, 
