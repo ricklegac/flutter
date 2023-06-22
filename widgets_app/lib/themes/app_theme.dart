@@ -8,6 +8,13 @@ class AppTheme{
         appBarTheme: const  AppBarTheme(
           color: Colors.indigo,
           elevation: 0,
-        )
+        ),
+    elevatedButtonTheme: ElevatedButtonTheme(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.indigo,
+        elevation: 0,
+      )
+    ),
    );
+   
 }
