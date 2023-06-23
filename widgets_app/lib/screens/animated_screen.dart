@@ -34,7 +34,9 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
         title: const Text('animated widget'),
       ),
       body:  Center(
-         child: Container(
+         child: AnimatedContainer(
+          duration: const Duration(milliseconds: 100),
+          curve: Curves.bounceOut,
           width: _width,
           height: _height,
           decoration: BoxDecoration(
@@ -50,6 +52,7 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
           changeShape();
         }
          ),
+         
     );
   }
 }
