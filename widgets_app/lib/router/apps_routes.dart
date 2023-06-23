@@ -26,6 +26,7 @@ static final menuOption = <MenuOption>[
     'listview2' :(context) => const Listview2Screen(),
     'alert'     :((context) => const AlertScreen()),
     'card'      :(context) => const CardScreen(),
+    'avatar screen': (context) => const AvatarScreen(),
   };
  
 }
