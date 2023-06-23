@@ -8,7 +8,7 @@ class AlertScreen extends StatelessWidget {
   void DisplayDialog (BuildContext context){
     
     showDialog(
-      barrierDismissible: true,
+      barrierDismissible: false,
       context: context, 
       builder: (context){
         return  AlertDialog(
@@ -24,8 +24,9 @@ class AlertScreen extends StatelessWidget {
           ),
           actions: [
             TextButton(
-              onPressed: () {}, 
-              child: const Text('hola'),
+              onPressed: () {Navigator.pop(context);}, 
+              child: const Text('Cancelar'),
+              
               )
           ],
         );
