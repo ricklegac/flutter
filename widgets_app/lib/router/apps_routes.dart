@@ -9,7 +9,8 @@ static final menuOption = <MenuOption>[
   MenuOption(route: 'listview2', name: 'List View 2', screen: const Listview2Screen() , icon: Icons.list_alt_outlined),
   MenuOption(route: 'alert', name: 'alert', screen: const AlertScreen() , icon: Icons.add_alert_sharp),
   MenuOption(route: 'card', name: 'card', screen: const CardScreen() , icon: Icons.card_giftcard),
-  MenuOption(route: 'avatar', icon: Icons.supervised_user_circle, name: 'avatar', screen: const AvatarScreen())
+  MenuOption(route: 'avatar', icon: Icons.supervised_user_circle, name: 'avatar', screen: const AvatarScreen()),
+  MenuOption(route: 'animated_screen', icon:Icons.animation, name: 'animated screen', screen: const AnimatedScreen()),
 ];
   static Map<String, Widget Function(BuildContext)> getAppRoutes(){
     Map<String, Widget Function(BuildContext)> appRoutes = {
@@ -28,6 +29,7 @@ static final menuOption = <MenuOption>[
     'alert'     :((context) => const AlertScreen()),
     'card'      :(context) => const CardScreen(),
     'avatar screen': (context) => const AvatarScreen(),
+    'animated Screen': (context) => const AnimatedScreen(),
   };
  
 }
