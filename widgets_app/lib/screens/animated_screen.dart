@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 class AnimatedScreen extends StatefulWidget {
    
   const AnimatedScreen({Key? key}) : super(key: key);
