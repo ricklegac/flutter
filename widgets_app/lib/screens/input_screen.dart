@@ -6,9 +6,34 @@ class InputScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-         child: Text('InputScreen'),
+    return  Scaffold(
+      appBar: AppBar(
+        title: const Text('inputs'),
+      ),
+      body: SingleChildScrollView(
+         child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Column(
+            children: [
+              TextFormField(
+                autofocus: true,
+                autocorrect: true,
+                initialValue: '',
+                onChanged: (value) => print('$value'),
+                validator: (value) {
+                  if (value ==null) return 'campo requerido';
+                  return value.length<3 ? 'Minimo 3 letras' : null;
+                },
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                decoration: const InputDecoration(
+                  hintText: 'Nombre de usuario',
+                  labelText: 'Nombre',
+                  helperText: 'solo letras',
+                ),
+              ),
+            ],
+          ),
+         ),
       ),
     );
   }
