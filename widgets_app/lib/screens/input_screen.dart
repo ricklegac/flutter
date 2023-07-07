@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_app/widgets/widgets.dart';
 
 class InputScreen extends StatelessWidget {
-   
-  const InputScreen({Key? key}) : super(key: key);
+  final String? hinText;
+  final String? labelText;
+  final String? helperText;
+  final IconData? icon;
+  final IconData? suffixIcon;
+  
+  const InputScreen({
+    Key? key, 
+    this.hinText, 
+    this.labelText, 
+    this.helperText, 
+    this.icon, 
+    this.suffixIcon,
+    }) : super(key: key);
   
   @override
   
@@ -15,40 +28,10 @@ class InputScreen extends StatelessWidget {
          child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
-            children: [
-              TextFormField(
-                autofocus: true,
-                autocorrect: true,
-                initialValue: 'valor inicial',
-                onChanged: (value) => print('$value'),
-                validator: (value) {
-                  if (value ==null) return 'campo requerido';
-                  return value.length<3 ? 'Minimo 3 letras' : null;
-                },
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                decoration: const InputDecoration(
-                  hintText: 'Nombre de usuario',
-                  labelText: 'Nombre',
-                  helperText: 'solo letras',
-                ),
-              ),
-              const SizedBox(height: 16.0),
-              TextFormField(
-                //autofocus: true,
-                autocorrect: true,
-                initialValue: 'valor inicial',
-                //onChanged: (value) => print('$value'),
-                validator: (value) {
-                  if (value ==null) return 'campo requerido';
-                  return value.length<3 ? 'Minimo 3 letras' : null;
-                },
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                decoration: const InputDecoration(
-                  hintText: 'Nombre de usuario',
-                  labelText: 'Nombre',
-                  helperText: 'solo letras',
-                ),
-              ),
+            children: const [
+              CustomInputWidget(hinText: 'Ricardo', icon: Icons.line_style, helperText: 'nombre',),
+              SizedBox(height: 16.0),
+              
             ],
           ),
          ),
@@ -56,3 +39,4 @@ class InputScreen extends StatelessWidget {
     );
   }
 }
+
