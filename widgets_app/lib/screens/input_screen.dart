@@ -34,10 +34,10 @@ class InputScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16.0),
               TextFormField(
-                autofocus: true,
+                //autofocus: true,
                 autocorrect: true,
                 initialValue: 'valor inicial',
-                onChanged: (value) => print('$value'),
+                //onChanged: (value) => print('$value'),
                 validator: (value) {
                   if (value ==null) return 'campo requerido';
                   return value.length<3 ? 'Minimo 3 letras' : null;
