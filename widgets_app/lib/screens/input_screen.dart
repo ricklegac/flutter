@@ -56,12 +56,13 @@ class InputScreen extends StatelessWidget {
                     child: Center(child: Text('guardar')),
                   ),
                   onPressed: () {
-                    FocusScope.of(context).requestFocus(FocusNode()); // ocultamos el teclado 
+                    //FocusScope.of(context).requestFocus(FocusNode()); // ocultamos el teclado 
                     if (!myFormKey.currentState!.validate()){
                       
                       print('formaulario no valido');
                       return;
                     }
+                    print(formvalues);
                   } , 
                   )
               ],

@@ -32,7 +32,7 @@ class CustomInputWidget extends StatelessWidget {
     return TextFormField(
       autofocus: true,
       autocorrect: true,
-      initialValue: 'valor inicial',
+      //initialValue: 'valor inicial',
       keyboardType: textinput,
       obscureText: obscureText,
       //onChanged: (value) => print('$value'),
