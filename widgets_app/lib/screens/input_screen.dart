@@ -39,16 +39,16 @@ class InputScreen extends StatelessWidget {
             key: myFormKey,
             child: Column( //envolvemos este en un widget form porque es lo que contiene los datos
               children:   [
-                const CustomInputWidget(hinText: 'Nombre usuario', icon: Icons.line_style, helperText: 'nombre', textinput: null,),
+                CustomInputWidget(hinText: 'Nombre usuario', icon: Icons.line_style, helperText: 'nombre', textinput: null, formPoperty: 'first_name', formValues: formvalues,),
                 const SizedBox(height: 16.0),
                 
-                const CustomInputWidget(hinText: 'Apellido usuario', icon: Icons.line_style, helperText: 'apellido',),
+                CustomInputWidget(hinText: 'Apellido usuario', icon: Icons.line_style, helperText: 'apellido',formPoperty: 'last_name', formValues: formvalues,),
                 const SizedBox(height: 16),
           
-                const CustomInputWidget(hinText: 'Correo usuario', icon: Icons.line_style, helperText: 'correo', textinput: TextInputType.emailAddress),
+                CustomInputWidget(hinText: 'Correo usuario', icon: Icons.line_style, helperText: 'correo', textinput: TextInputType.emailAddress,formPoperty: 'email', formValues: formvalues,),
                 const SizedBox(height: 16),
           
-                const CustomInputWidget(hinText: 'password', icon: Icons.password, helperText: 'password', obscureText: true,),
+                CustomInputWidget(hinText: 'password', icon: Icons.password, helperText: 'password', obscureText: true,formPoperty: 'password', formValues: formvalues,),
                 const SizedBox(height: 16),
                 ElevatedButton(
                   child: const SizedBox(
@@ -56,7 +56,7 @@ class InputScreen extends StatelessWidget {
                     child: Center(child: Text('guardar')),
                   ),
                   onPressed: () {
-                    FocusScope.of(context).requestFocus(FocusNode());
+                    FocusScope.of(context).requestFocus(FocusNode()); // ocultamos el teclado 
                     if (!myFormKey.currentState!.validate()){
                       
                       print('formaulario no valido');

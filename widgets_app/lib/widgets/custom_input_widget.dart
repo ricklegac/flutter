@@ -9,6 +9,8 @@ class CustomInputWidget extends StatelessWidget {
   final IconData? suffixIcon;
   final TextInputType? textinput;
   final bool obscureText; 
+  final String formPoperty; //la propuedad que va a apuntar el formulario
+  final Map<String, String> formValues;
   const CustomInputWidget({
     Key? key, 
     this.hinText, 
@@ -17,7 +19,9 @@ class CustomInputWidget extends StatelessWidget {
     this.icon, 
     this.suffixIcon, 
     this.textinput, 
-    this.obscureText = false,
+    this.obscureText = false, 
+    required this.formPoperty, 
+    required this.formValues,
 
   }) : super(key: key);
 
@@ -32,6 +36,9 @@ class CustomInputWidget extends StatelessWidget {
       keyboardType: textinput,
       obscureText: obscureText,
       //onChanged: (value) => print('$value'),
+      onChanged: (value) {
+        formValues[formPoperty] = value;
+      },
       validator: (value) {
         if (value ==null) return 'campo requerido';
         return value.length<3 ? 'Minimo 3 letras' : null;
