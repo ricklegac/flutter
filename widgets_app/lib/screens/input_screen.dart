@@ -9,7 +9,7 @@ class InputScreen extends StatelessWidget {
   final IconData? suffixIcon;
   
   const InputScreen({
-    Key? key, 
+    Key? key, //todos los widgets ahora tiene un key
     this.hinText, 
     this.labelText, 
     this.helperText, 
@@ -20,6 +20,14 @@ class InputScreen extends StatelessWidget {
   @override
   
   Widget build(BuildContext context) {
+    final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
+    final Map<String, String> formvalues = {
+        'first_name' : 'ricardo',
+        'last_name' : 'leguizamon',
+        'email' : 'cualquiera@gamicsa.com',
+        'password' : '12345', 
+        'role' : 'admin'
+    };
     return  Scaffold(
       appBar: AppBar(
         title: const Text('inputs'),
@@ -28,6 +36,7 @@ class InputScreen extends StatelessWidget {
          child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Form(
+            key: myFormKey,
             child: Column( //envolvemos este en un widget form porque es lo que contiene los datos
               children:   [
                 const CustomInputWidget(hinText: 'Nombre usuario', icon: Icons.line_style, helperText: 'nombre', textinput: null,),
@@ -47,7 +56,12 @@ class InputScreen extends StatelessWidget {
                     child: Center(child: Text('guardar')),
                   ),
                   onPressed: () {
-          
+                    FocusScope.of(context).requestFocus(FocusNode());
+                    if (!myFormKey.currentState!.validate()){
+                      
+                      print('formaulario no valido');
+                      return;
+                    }
                   } , 
                   )
               ],
