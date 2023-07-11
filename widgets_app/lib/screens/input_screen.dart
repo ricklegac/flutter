@@ -29,9 +29,17 @@ class InputScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             children: const [
-              CustomInputWidget(hinText: 'Ricardo', icon: Icons.line_style, helperText: 'nombre',),
+              CustomInputWidget(hinText: 'Nombre usuario', icon: Icons.line_style, helperText: 'nombre', textinput: null,),
               SizedBox(height: 16.0),
               
+              CustomInputWidget(hinText: 'Apellido usuario', icon: Icons.line_style, helperText: 'apellido',),
+              SizedBox(height: 16),
+
+              CustomInputWidget(hinText: 'Correo usuario', icon: Icons.line_style, helperText: 'correo', textinput: TextInputType.emailAddress),
+              SizedBox(height: 16),
+
+              CustomInputWidget(hinText: 'password', icon: Icons.password, helperText: 'password', obscureText: true,),
+
             ],
           ),
          ),
