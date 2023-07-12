@@ -11,6 +11,7 @@ class SliderScreen extends StatefulWidget {
 
 class _SliderScreenState extends State<SliderScreen> {
   double _sliderValue = 100;
+  bool _sliderEnabled = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,11 +33,26 @@ class _SliderScreenState extends State<SliderScreen> {
               print (value);
             }
           ),
-          Image(
-            image: NetworkImage('https://i.pinimg.com/564x/2f/ea/a3/2feaa346bd96e29c20ccacf92acd7f16.jpg'),
-            fit: BoxFit.contain,
-            width: _sliderValue,
+          Checkbox(
+            value: _sliderEnabled, 
+            onChanged: (value) {
+              _sliderEnabled = value ?? true;
+              setState(() {
+                
+              });
+            }
+            
             ),
+            
+          Expanded( // para que agarre lo restante del tamaño de la Columna 
+            child: SingleChildScrollView(
+              child: Image(
+                image: NetworkImage('https://i.pinimg.com/564x/2f/ea/a3/2feaa346bd96e29c20ccacf92acd7f16.jpg'),
+                fit: BoxFit.contain,
+                width: _sliderValue,
+                ),
+            ),
+          ),
             const SizedBox(width: 100,)
         ],
       )
