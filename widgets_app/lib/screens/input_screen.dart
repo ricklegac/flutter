@@ -38,7 +38,7 @@ class InputScreen extends StatelessWidget {
           child: Form(
             key: myFormKey,
             child: Column( //envolvemos este en un widget form porque es lo que contiene los datos
-              children:   [
+              children:[
                 CustomInputWidget(hinText: 'Nombre usuario', icon: Icons.line_style, helperText: 'nombre', textinput: null, formPoperty: 'first_name', formValues: formvalues,),
                 const SizedBox(height: 16.0),
                 
