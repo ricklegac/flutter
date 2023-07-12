@@ -11,7 +11,8 @@ static final menuOption = <MenuOption>[
   MenuOption(route: 'card', name: 'card', screen: const CardScreen() , icon: Icons.card_giftcard),
   MenuOption(route: 'avatar', icon: Icons.supervised_user_circle, name: 'avatar', screen: const AvatarScreen()),
   MenuOption(route: 'animated_screen', icon:Icons.animation, name: 'animated screen', screen: const AnimatedScreen()),
-  MenuOption(route: 'input_screen', icon: Icons.input, name: 'input screen',screen: const InputScreen())
+  MenuOption(route: 'input_screen', icon: Icons.input, name: 'input screen',screen: const InputScreen()),
+  MenuOption(route: 'slider_screen', icon: Icons.slideshow, name: 'slider screen', screen: const SliderScreen())
 ];
   static Map<String, Widget Function(BuildContext)> getAppRoutes(){
     Map<String, Widget Function(BuildContext)> appRoutes = {
