@@ -45,6 +45,7 @@ class _SliderScreenState extends State<SliderScreen> {
               });
             }
             ),
+
             CheckboxListTile(
               title: const Text('habilitar slider'),
               value: _sliderEnabled, 
@@ -54,14 +55,37 @@ class _SliderScreenState extends State<SliderScreen> {
                   
                 });
               }),
+            Switch.adaptive(
+              value: _sliderEnabled, 
+              onChanged: (value) {
+                _sliderEnabled = value;
+                setState(() {
+                  
+                });
+              },
+              ),
+            SwitchListTile.adaptive(
+              title: const Text('habilitar slider'),
+              value: _sliderEnabled, 
+              onChanged: (value){
+                _sliderEnabled =value ?? true;
+                setState(() {
+                  
+                });
+              }),
+              const AboutListTile(),
+
               
           Expanded( // para que agarre lo restante del tamaño de la Columna 
             child: SingleChildScrollView(
-              child: Image(
-                image: NetworkImage('https://i.pinimg.com/564x/2f/ea/a3/2feaa346bd96e29c20ccacf92acd7f16.jpg'),
-                fit: BoxFit.contain,
-                width: _sliderValue,
-                ),
+              child: Visibility(
+                visible: _sliderEnabled,
+                child: Image(
+                  image: NetworkImage('https://i.pinimg.com/564x/2f/ea/a3/2feaa346bd96e29c20ccacf92acd7f16.jpg'),
+                  fit: BoxFit.contain,
+                  width: _sliderValue,
+                  ),
+              ),
             ),
           ),
             const SizedBox(width: 100,)
