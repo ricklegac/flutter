@@ -11,7 +11,26 @@
 class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
   final List<int> imagesId =[1,2,3,4,5,6,7,8,9,10];
   final ScrollController scrollcontroller = ScrollController();
-
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    scrollcontroller.addListener(() {
+      //print ('${scrollcontroller.position.pixels}, ${scrollcontroller.position.maxScrollExtent}');
+      if ((scrollcontroller.position.pixels+500)>=scrollcontroller.position.maxScrollExtent){
+        add5();
+      }
+    });
+  }
+  void add5(){
+    final lastId = imagesId.last;
+    imagesId.addAll(
+      [1,2,3,4,5].map((e) => lastId+e)
+    );
+    setState(() {
+      
+    });
+  }
       @override
       Widget build(BuildContext context) {
         return  Scaffold(
