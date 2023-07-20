@@ -6,8 +6,13 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body:  Center(
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        title: const Text('Peliculas'),
+        
+      ),
+      body:  const Center(
         child: Text('details screen'),
       ),
     );
