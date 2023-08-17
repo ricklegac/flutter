@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/screens.dart';
+import 'package:peliculas/screens/screens.dart';
 
 
 void main() => runApp(const MyApp());
@@ -18,6 +18,12 @@ class MyApp extends StatelessWidget {
         'DetailScreen': ( _ ) => const DetailsScreen(),
 
       },
+      theme: ThemeData.light().copyWith(
+        appBarTheme: const  AppBarTheme(
+          color: Colors.indigo,
+        )
+      ),
+
     );
   }
 }
