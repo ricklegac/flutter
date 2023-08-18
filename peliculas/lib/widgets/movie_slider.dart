@@ -13,14 +13,37 @@ class MovieSlider extends StatelessWidget {
       color: Colors.black,
       child:  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Padding(
+        children:  [
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Text('pupulares',style: TextStyle(color: Colors.red, fontSize: 60)),
           ),
           
+          Expanded(
+            child: ListView.builder (
+              scrollDirection: Axis.horizontal,
+              itemCount: 20,
+              itemBuilder: ( _ , int index){
+                return const _MovieSlider();
+              }
+            ),
+          ),
+
   
       ]),
     );
+  }
+}
+class _MovieSlider extends StatelessWidget {
+  const _MovieSlider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+                  width: 130,
+                  height: 190,
+                  color: Colors.green,
+                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                );
   }
 }
