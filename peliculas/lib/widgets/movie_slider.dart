@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -7,7 +9,7 @@ class MovieSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 500,
       //color: Colors.black,
@@ -16,9 +18,9 @@ class MovieSlider extends StatelessWidget {
         children:  [
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Text('pupulares',style: TextStyle(color: Colors.red, fontSize: 60)),
+            child: Text('pupulares',style: TextStyle(color: Colors.black, fontSize: 30)),
           ),
-          
+          const SizedBox(height: 5),
           Expanded(
             child: ListView.builder (
               scrollDirection: Axis.horizontal,
@@ -42,7 +44,7 @@ class _MovieSlider extends StatelessWidget {
     return Container(
                   width: 130,
                   height: 190,
-                  color: Colors.green,
+                  //color: Colors.green,
                   margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   child: Column(
                     children: [
