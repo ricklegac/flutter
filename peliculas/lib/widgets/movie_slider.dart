@@ -45,16 +45,29 @@ class _MovieSlider extends StatelessWidget {
                   color: Colors.green,
                   margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   child: Column(
-                    children: const [
-                      FadeInImage(
-                        placeholder:  AssetImage('assets/no-image.jpg'), 
-                        image: NetworkImage('https://via.placeholder.com/300x400'),
-                        width: 130,
-                        height: 160,
-                        fit: BoxFit.cover,
-                        
-                      )
+                    children: [
+                      GestureDetector(
+                        onTap: () => Navigator.pushNamed(context, 'DetailScreen', arguments: 'movie-details'),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: const FadeInImage(
+                            placeholder:  AssetImage('assets/no-image.jpg'), 
+                            image: NetworkImage('https://via.placeholder.com/300x400'),
+                            width: 130,
+                            height: 160,
+                            fit: BoxFit.cover,
+                            
+                          ),
+                        ),
+                      ),
                       
+                      const Text(
+                        'StarWards',
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                        textAlign: TextAlign.center ,
+
+                      )
                     ],
                   )
 
