@@ -10,7 +10,7 @@ class MovieSlider extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 500,
-      color: Colors.black,
+      //color: Colors.black,
       child:  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:  [
@@ -44,6 +44,20 @@ class _MovieSlider extends StatelessWidget {
                   height: 190,
                   color: Colors.green,
                   margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  child: Column(
+                    children: const [
+                      FadeInImage(
+                        placeholder:  AssetImage('assets/no-image.jpg'), 
+                        image: NetworkImage('https://via.placeholder.com/300x400'),
+                        width: 130,
+                        height: 160,
+                        fit: BoxFit.cover,
+                        
+                      )
+                      
+                    ],
+                  )
+
                 );
   }
 }
