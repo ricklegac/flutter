@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light().copyWith(
         appBarTheme: const  AppBarTheme(
           color: Colors.indigo,
+          
         )
       ),
 
