@@ -90,7 +90,11 @@ class _PosterAndTitle extends StatelessWidget {
                Text('movie.subtitle',style: Theme.of(context).textTheme.subtitle1,
                overflow: TextOverflow.ellipsis, maxLines: 1),
                
-              
+              Row(
+                children: const [
+                  Icon(Icons.star_border_outlined),
+                ],
+              ),
             ],
           )
         ],
