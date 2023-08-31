@@ -56,6 +56,7 @@ class _AppBar extends StatelessWidget {
           width: double.infinity,
           alignment: Alignment.bottomCenter,
           color: Colors.black12,
+          padding: const EdgeInsets.only(bottom: 10),
           child: const Text('Pelicula',style: TextStyle(fontFamily: 'Roboto', fontSize: 16 )),
           
           ),
