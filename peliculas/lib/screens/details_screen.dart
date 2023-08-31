@@ -24,6 +24,7 @@ class DetailsScreen extends StatelessWidget {
                 [
                   //const Text('Aaaa'),
                   _PosterAndTitle(),
+                  _OverView(),
                 ]
               ),
             )
@@ -68,6 +69,7 @@ class _PosterAndTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme; 
     return Container(
       margin: const EdgeInsets.only(top:20),
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -85,20 +87,36 @@ class _PosterAndTitle extends StatelessWidget {
 
           Column(
             children:  [
-               Text('movie.title',style: Theme.of(context).textTheme.headline5,
+               Text('movie.title',style: textTheme.headline5,
                overflow: TextOverflow.ellipsis, maxLines: 2),
-               Text('movie.subtitle',style: Theme.of(context).textTheme.subtitle1,
+               Text('movie.subtitle',style: textTheme.subtitle1,
                overflow: TextOverflow.ellipsis, maxLines: 1),
                
               Row(
-                children: const [
-                  Icon(Icons.star_border_outlined),
+                children: [
+                  const Icon(Icons.star_border_outlined, size: 15, color: Colors.grey),
+                  Text('movie.VoteAverage',style: textTheme.caption,),
                 ],
               ),
             ],
           )
         ],
         
+      ),
+    );
+  }
+}
+
+class _OverView extends StatelessWidget {
+  const _OverView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      child: Text('Quis aliqua occaecat incididunt dolor culpa laborum in aliqua ut.Tempor in sint dolore esse nostrud laboris ea sunt officia aute esse sunt.Sint magna magna voluptate ut proident exercitation velit irure amet dolore veniam.',
+      textAlign: TextAlign.justify,
+      style: Theme.of(context).textTheme.subtitle1,
       ),
     );
   }
