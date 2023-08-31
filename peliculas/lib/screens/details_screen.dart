@@ -26,6 +26,9 @@ class DetailsScreen extends StatelessWidget {
                   //const Text('Aaaa'),
                   _PosterAndTitle(),
                   _OverView(),
+                  _OverView(),
+                  _OverView(),
+                  _OverView(),
                   CastingCard(),
                 ]
               ),
