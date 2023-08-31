@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:peliculas/widgets/widgets.dart';
 
 
 class DetailsScreen extends StatelessWidget {
@@ -25,6 +26,7 @@ class DetailsScreen extends StatelessWidget {
                   //const Text('Aaaa'),
                   _PosterAndTitle(),
                   _OverView(),
+                  CastingCard(),
                 ]
               ),
             )
