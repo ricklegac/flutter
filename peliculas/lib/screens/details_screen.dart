@@ -10,7 +10,7 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    final String movie = ModalRoute.of(context)?.settings.arguments.toString() ?? 'no-movie';
+    //final String movie = ModalRoute.of(context)?.settings.arguments.toString() ?? 'no-movie';
     return Scaffold(
       // appBar: AppBar(
       //   elevation: 0,
