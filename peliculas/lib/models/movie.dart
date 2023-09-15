@@ -4,12 +4,12 @@ class Result {
     String? backdropPath;
     List<int> genreIds;
     int id;
-    OriginalLanguage originalLanguage;
+    String originalLanguage;
     String originalTitle;
     String overview;
     double popularity;
     String? posterPath;
-    DateTime? releaseDate;
+    String? releaseDate;
     String title;
     bool video;
     double voteAverage;
@@ -71,22 +71,22 @@ class Result {
     // };
 }
 
-enum OriginalLanguage {
-    EN
-}
+// enum OriginalLanguage {
+//     EN
+// }
 
-final originalLanguageValues = EnumValues({
-    "en": OriginalLanguage.EN
-});
+// final originalLanguageValues = EnumValues({
+//     "en": OriginalLanguage.EN
+// });
 
-class EnumValues<T> {
-    Map<String, T> map;
-    late Map<T, String> reverseMap;
+// class EnumValues<T> {
+//     Map<String, T> map;
+//     late Map<T, String> reverseMap;
 
-    EnumValues(this.map);
+//     EnumValues(this.map);
 
-    Map<T, String> get reverse {
-        reverseMap = map.map((k, v) => MapEntry(v, k));
-        return reverseMap;
-    }
-}
+//     Map<T, String> get reverse {
+//         reverseMap = map.map((k, v) => MapEntry(v, k));
+//         return reverseMap;
+//     }
+// }
