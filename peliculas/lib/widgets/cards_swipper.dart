@@ -1,9 +1,13 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:peliculas/models/movie.dart';
 
 class CardSwipper extends StatelessWidget {
-  const CardSwipper({super.key});
-
+  final List<Result> movies;
+  
+  CardSwipper({super.key, required this.movies});
+  
+  
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

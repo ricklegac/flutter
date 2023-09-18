@@ -28,7 +28,7 @@ class MovieProvider extends ChangeNotifier{ // para que sea un provider debe de 
         print(nowPlayingResponse.results[0].title);
         onDisplayMovies = nowPlayingResponse.results; // cuando se ejecute tendra un lista de peliculas 
         print(onDisplayMovies);
-        notifyListeners();
+        notifyListeners(); // va a notificar a los listeners 
        
       } else {
         // Handle HTTP error status codes
