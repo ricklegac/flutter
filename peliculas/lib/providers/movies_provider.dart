@@ -21,7 +21,7 @@ class MovieProvider extends ChangeNotifier{ // para que sea un provider debe de 
       //final Map<String, dynamic> decodeData = json.decode(response.body);
       if (response.statusCode == 200) {
         // Successful response, process the data here
-        final data = response.body;
+        //final data = response.body;
         String jsonString = response.body;
         Map<String, dynamic> jsonMap = json.decode(jsonString);
         NowPlayingResponse nowPlayingResponse = NowPlayingResponse.fromJson(jsonMap);

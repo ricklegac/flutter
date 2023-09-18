@@ -15,7 +15,7 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => MovieProvider(), lazy: false,),
       ],
       // lazy es cuando el provider inicialice apenas se inice
-      child: MyApp(),
+      child:const MyApp(),
     );
       
     
