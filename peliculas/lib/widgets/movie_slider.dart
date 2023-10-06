@@ -2,11 +2,19 @@
 //import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+//import 'package:flutter/src/widgets/container.dart';
+//import 'package:flutter/src/widgets/framework.dart';
+import 'package:peliculas/models/movie.dart';
 
 class MovieSlider extends StatelessWidget {
-  const MovieSlider({super.key});
+  final List<Result> movies;
+  final String? titulo;
+
+  const MovieSlider({
+    super.key,
+    required this.movies,
+    this.titulo,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,18 +25,24 @@ class MovieSlider extends StatelessWidget {
       child:  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:  [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Text('pupulares',style: TextStyle(color: Colors.black, fontSize: 30)),
+          if(titulo != null)
+          Padding(
+            
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Text(titulo!,style: const TextStyle(color: Colors.black, fontSize: 30)),
+            
+            
           ),
           const SizedBox(height: 5),
           Expanded(
             child: ListView.builder (
               scrollDirection: Axis.horizontal,
-              itemCount: 20,
+              itemCount: movies.length,
               itemBuilder: ( _ , int index){
-                return const _MovieSlider();
-              }
+                return  _MoviePoster( movie: movies[index]);
+              },
+              
+              
             ),
           ),
 
@@ -37,8 +51,15 @@ class MovieSlider extends StatelessWidget {
     );
   }
 }
-class _MovieSlider extends StatelessWidget {
-  const _MovieSlider({super.key});
+class _MoviePoster extends StatelessWidget { // aca recibimos la pelicula
+
+  final Result movie;
+
+  const _MoviePoster({
+    
+    required this.movie,
+
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +74,9 @@ class _MovieSlider extends StatelessWidget {
                         onTap: () => Navigator.pushNamed(context, 'DetailScreen', arguments: 'movie-details'),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
-                          child: const FadeInImage(
-                            placeholder:  AssetImage('assets/no-image.jpg'), 
-                            image: NetworkImage('https://via.placeholder.com/300x400'),
+                          child:  FadeInImage(
+                            placeholder:  const AssetImage('assets/no-image.jpg'), 
+                            image: NetworkImage(movie.fullPosterImg),
                             width: 130,
                             height: 160,
                             fit: BoxFit.cover,
@@ -64,8 +85,8 @@ class _MovieSlider extends StatelessWidget {
                         ),
                       ),
                       
-                      const Text(
-                        'StarWards',
+                       Text(
+                        movie.title,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         textAlign: TextAlign.center ,
