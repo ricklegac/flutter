@@ -3,9 +3,9 @@ import 'package:http/http.dart' as http;
 import 'package:peliculas/models/movie.dart';
 import 'package:peliculas/models/now_playing_response.dart';
 import 'dart:convert';
-import 'package:peliculas/models/models.dart';
+//import 'package:peliculas/models/models.dart';
 
-import 'package:peliculas/models/popular_response.dart';
+//import 'package:peliculas/models/popular_response.dart';
 class MovieProvider extends ChangeNotifier{ // para que sea un provider debe de extender de changenotifier
   final _apiKey = 'dce3b23572e77f35d099620c9feae51d';
   final _baseUrl = 'api.themoviedb.org';
@@ -16,7 +16,7 @@ class MovieProvider extends ChangeNotifier{ // para que sea un provider debe de 
     print('movie provider inicializado');
     getNowPlaying();
     }
-    Future<void> getNowPlaying() async {
+    getNowPlaying() async {
     var url = Uri.https(
       _baseUrl, '3/movie/now_playing',
         {'api_key': _apiKey, 
@@ -65,8 +65,12 @@ class MovieProvider extends ChangeNotifier{ // para que sea un provider debe de 
       Map<String, dynamic> jsonMap = json.decode(jsonString);
       NowPlayingResponse popularResponse = NowPlayingResponse.fromJson(jsonMap);
 
-      popularMovies = [...popularResponse.results]; // ... desestructurar
+      popularMovies = [...popularMovies ,...popularResponse.results]; // ... desestructurar
+      // desestructurar porque se cambia de pagina 
 
+      print(popularMovies[0]);
+
+      notifyListeners(); 
 
 
   }

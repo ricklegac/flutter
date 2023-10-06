@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:peliculas/models/movie.dart';
+//import 'package:peliculas/models/movie.dart';
 class CastingCard extends StatelessWidget {
   //final List<Result> movies;
   const CastingCard({super.key, //required this.movies
