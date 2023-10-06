@@ -11,13 +11,18 @@ class MovieProvider extends ChangeNotifier{ // para que sea un provider debe de 
   final _baseUrl = 'api.themoviedb.org';
   final _language = 'es-ES';
   List<Result> onDisplayMovies= [];
+  List<Result> popularMovies =[];
   MovieProvider(){
     print('movie provider inicializado');
     getNowPlaying();
     }
     Future<void> getNowPlaying() async {
-    var url = Uri.https(_baseUrl, '3/movie/now_playing',
-        {'api_key': _apiKey, 'language': _language, 'page': '1'});
+    var url = Uri.https(
+      _baseUrl, '3/movie/now_playing',
+        {'api_key': _apiKey, 
+        'language': _language, 
+        'page': '1'
+        });
 
     try {
       final response = await http.get(url);
@@ -57,7 +62,10 @@ class MovieProvider extends ChangeNotifier{ // para que sea un provider debe de 
       //final pR = PopularResponse.fromJson(response.body);
 
       String jsonString = response.body;
-      Map<String, dynamic> popularResponse = json.decode(jsonString);
+      Map<String, dynamic> jsonMap = json.decode(jsonString);
+      NowPlayingResponse popularResponse = NowPlayingResponse.fromJson(jsonMap);
+
+      popularMovies = [...popularResponse.results]; // ... desestructurar
 
 
 
