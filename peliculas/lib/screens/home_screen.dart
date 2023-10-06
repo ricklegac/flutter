@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final movieProvider = Provider.of<MovieProvider>(context,listen: true); // el listen es para redibujarse 
-    print(movieProvider.onDisplayMovies);
+    //print(movieProvider.onDisplayMovies);
     return Scaffold(
       appBar: AppBar(
         title: const Text('peliculas'),

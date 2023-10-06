@@ -13,7 +13,8 @@ class MovieProvider extends ChangeNotifier{ // para que sea un provider debe de 
   List<Result> onDisplayMovies= [];
   List<Result> popularMovies =[];
   MovieProvider(){
-    print('movie provider inicializado');
+    //print('movie provider inicializado');
+    getPopularMovies();
     getNowPlaying();
     }
     getNowPlaying() async {
@@ -33,19 +34,19 @@ class MovieProvider extends ChangeNotifier{ // para que sea un provider debe de 
         String jsonString = response.body;
         Map<String, dynamic> jsonMap = json.decode(jsonString);
         NowPlayingResponse nowPlayingResponse = NowPlayingResponse.fromJson(jsonMap);
-        print(nowPlayingResponse.results[0].title);
+        //print(nowPlayingResponse.results[0].title);
         onDisplayMovies = nowPlayingResponse.results; // cuando se ejecute tendra un lista de peliculas 
-        print(onDisplayMovies);
+        //print(onDisplayMovies);
         notifyListeners(); // va a notificar a los listeners 
        
       } else {
         // Handle HTTP error status codes
-        print('HTTP Error: ${response.statusCode}');
+        //print('HTTP Error: ${response.statusCode}');
         
       }
     } catch (e) {
       // Handle exceptions that may occur during the request
-      print('Error: $e');
+      //print('Error: $e');
       
     }
     

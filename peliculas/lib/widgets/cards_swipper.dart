@@ -11,6 +11,18 @@ class CardSwipper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
+    if(movies.length<3){
+      return SizedBox(
+        width: double.infinity,
+        height: size.height*0.5,
+        child: const Center(
+          child: CircularProgressIndicator(),
+        )
+
+      );
+    }
+
     return Container(
       width: double.infinity,
       height: size.height*0.5,
