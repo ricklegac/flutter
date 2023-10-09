@@ -12,64 +12,49 @@ class MovieProvider extends ChangeNotifier{ // para que sea un provider debe de 
   final _language = 'es-ES';
   List<Result> onDisplayMovies= [];
   List<Result> popularMovies =[];
+  int _popularpage =0 ;
   MovieProvider(){
     //print('movie provider inicializado');
     getPopularMovies();
     getNowPlaying();
     }
-    getNowPlaying() async {
-    var url = Uri.https(
-      _baseUrl, '3/movie/now_playing',
+
+    Future<String> _getJsonData(String endpoint, [int page = 1] ) async { // se pone entre llaves [int page = 1] cuando es opcional
+    // si no viene nada entonces toma como 1 el page 
+      var url = Uri.https(
+      _baseUrl, endpoint,
         {'api_key': _apiKey, 
         'language': _language, 
-        'page': '1'
+        'page': '$page',
         });
 
-    try {
-      final response = await http.get(url);
-      //final Map<String, dynamic> decodeData = json.decode(response.body);
-      if (response.statusCode == 200) {
-        // Successful response, process the data here
-        //final data = response.body;
-        String jsonString = response.body;
-        Map<String, dynamic> jsonMap = json.decode(jsonString);
-        NowPlayingResponse nowPlayingResponse = NowPlayingResponse.fromJson(jsonMap);
-        //print(nowPlayingResponse.results[0].title);
-        onDisplayMovies = nowPlayingResponse.results; // cuando se ejecute tendra un lista de peliculas 
-        //print(onDisplayMovies);
-        notifyListeners(); // va a notificar a los listeners 
-       
-      } else {
-        // Handle HTTP error status codes
-        //print('HTTP Error: ${response.statusCode}');
-        
-      }
-    } catch (e) {
-      // Handle exceptions that may occur during the request
-      //print('Error: $e');
-      
+        final response = await http.get(url);
+        return response.body;
     }
+
+    getNowPlaying() async {
+
+    final jsondata = await _getJsonData('3/movie/now_playing'); 
+    Map<String, dynamic> jsonMap = json.decode(jsondata); // serializar 
+    NowPlayingResponse popularResponse = NowPlayingResponse.fromJson(jsonMap);
+    
+
+   
     
   }
   getPopularMovies() async{ // async porque necesita peticiones http
-     var url = Uri.https(
-      _baseUrl, '3/movie/now_playing',
-      {'api_key': _apiKey,
-       'language': _language, 
-       'page': '1'
-      });
+     
       
-      final response = await http.get(url);
       //final pR = PopularResponse.fromJson(response.body);
-
-      String jsonString = response.body;
-      Map<String, dynamic> jsonMap = json.decode(jsonString);
+      _popularpage++;
+      final jsondata = await _getJsonData('3/movie/popular', _popularpage);
+      Map<String, dynamic> jsonMap = json.decode(jsondata); // serializar 
       NowPlayingResponse popularResponse = NowPlayingResponse.fromJson(jsonMap);
 
       popularMovies = [...popularMovies ,...popularResponse.results]; // ... desestructurar
       // desestructurar porque se cambia de pagina 
 
-      print(popularMovies[0]);
+      //print(popularMovies[0]);
 
       notifyListeners(); 
 
