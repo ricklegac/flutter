@@ -60,6 +60,15 @@ class Result {
         return 'https://i.stack.imgur.com/GNhxO.png';
       }
     }
+    get fullBackdropPath{
+      if(posterPath != null){
+        return 'https://image.tmdb.org/t/p/w500${this.backdropPath}';
+      }
+      else{
+        return 'https://i.stack.imgur.com/GNhxO.png';
+      }
+    }
+
 
     // Map<String, dynamic> toJson() => {
     //     "adult": adult,
