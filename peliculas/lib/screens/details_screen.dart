@@ -1,6 +1,7 @@
 //import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:peliculas/models/movie.dart';
 import 'package:peliculas/widgets/widgets.dart';
 
 
@@ -10,7 +11,9 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    //final String movie = ModalRoute.of(context)?.settings.arguments.toString() ?? 'no-movie';
+    final Result movie = (ModalRoute.of(context)!.settings.arguments) as Result;
+
+    print(movie.title);
     return Scaffold(
       // appBar: AppBar(
       //   elevation: 0,
@@ -25,10 +28,6 @@ class DetailsScreen extends StatelessWidget {
                 [
                   //const Text('Aaaa'),
                   _PosterAndTitle(),
-                  _OverView(),
-                  _OverView(),
-                  _OverView(),
-                  _OverView(),
                   CastingCard(),
                 ]
               ),
@@ -60,8 +59,12 @@ class _AppBar extends StatelessWidget {
           child: const Text('Pelicula',style: TextStyle(fontFamily: 'Roboto', fontSize: 16 )),
           
           ),
-        background: const  FadeInImage(placeholder: AssetImage('assets/loading.gif') , image: NetworkImage('https://via.placeholder.com/500x300'),
-        fit: BoxFit.cover),
+        background: const  FadeInImage
+        (
+          placeholder: AssetImage('assets/loading.gif') , 
+          image: NetworkImage('https://via.placeholder.com/500x300'),
+          fit: BoxFit.cover
+        ),
         
       ),
 
