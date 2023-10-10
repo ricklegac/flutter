@@ -41,12 +41,6 @@ void initState() {
    }
  });
 }
-
-  // @override
-  // void dispose() { //cuando el widget es destruido 
-   
-  //   super.dispose();
-  // }
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
