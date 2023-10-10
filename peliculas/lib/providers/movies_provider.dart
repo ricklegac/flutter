@@ -39,47 +39,47 @@ class MovieProvider extends ChangeNotifier{ // para que sea un provider debe de 
   }
 
 
-  getPopularMovies() async // async porque necesita peticiones http
-  { 
-     var url = Uri.https(
-      _baseUrl, '3/movie/popular',
-      {'api_key': _apiKey,
-       'language': _language, 
-       'page': '1'
-      });
-      final response = await http.get(url);
-      //final pR = PopularResponse.fromJson(response.body);
-      String jsonString = response.body;
-      Map<String, dynamic> jsonMap = json.decode(jsonString);
-      PopularResponse popularResponse = PopularResponse.fromJson(jsonMap);
-      popularMovies = [...popularMovies ,...popularResponse.results]; // ... desestructurar
-      // desestructurar porque se cambia de pagina 
-      notifyListeners(); 
+  Future<Map<String, dynamic>> _fetchData(String endpoint,[page = 1]) async {
+  var url = Uri.https(
+    _baseUrl,
+    endpoint,
+    {
+      'api_key': _apiKey,
+      'language': _language,
+      'page': '$page', // You can modify this as needed
+    },
+  );
+  final response = await http.get(url);
+  if (response.statusCode == 200) {
+    return json.decode(response.body);
+  } else {
+    throw Exception('Failed to fetch data from $endpoint');
   }
+}
 
-  Future<void> getNowPlaying() async 
-  {
-
-    var url = Uri.https(
-      _baseUrl, '3/movie/now_playing',
-      {
-        'api_key': _apiKey,
-        'language': _language,
-        'page':'1'
-      }
-    );
-    final response = await http.get(url);
-    String jsonString = response.body;
-    Map<String, dynamic> jsonMap = json.decode(jsonString);
+Future<void> getNowPlaying() async {
+  try {
+    Map<String, dynamic> jsonMap = await _fetchData('3/movie/now_playing');
     NowPlayingResponse playingResponse = NowPlayingResponse.fromJson(jsonMap);
     onDisplayMovies = playingResponse.results;
     notifyListeners();
+  } catch (e) {
+    print('Error fetching or parsing data: $e');
+  }
+}
 
-   
-    
+Future<void> getPopularMovies() async {
+  try {
+    _popularpage++;
+    Map<String, dynamic> jsonMap = await _fetchData('3/movie/popular',_popularpage);
+    PopularResponse popularResponse = PopularResponse.fromJson(jsonMap);
+    popularMovies = [...popularMovies, ...popularResponse.results];
+    notifyListeners();
+  } catch (e) {
+    print('Error fetching or parsing data: $e');
   }
 }
 
 
 
-
+}
