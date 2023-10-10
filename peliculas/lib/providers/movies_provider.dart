@@ -71,7 +71,7 @@ Future<void> getNowPlaying() async {
 Future<void> getPopularMovies() async {
   try {
     _popularpage++;
-    Map<String, dynamic> jsonMap = await _fetchData('3/movie/popular',_popularpage);
+    Map<String, dynamic> jsonMap = await _fetchData('3/movie/popular',_popularpage );
     PopularResponse popularResponse = PopularResponse.fromJson(jsonMap);
     popularMovies = [...popularMovies, ...popularResponse.results];
     notifyListeners();

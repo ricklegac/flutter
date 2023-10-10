@@ -1,22 +1,52 @@
-//
-//import 'dart:ffi';
+
 
 import 'package:flutter/material.dart';
-//import 'package:flutter/src/widgets/container.dart';
-//import 'package:flutter/src/widgets/framework.dart';
 import 'package:peliculas/models/movie.dart';
 
-class MovieSlider extends StatelessWidget {
+class MovieSlider extends StatefulWidget {
   final List<Result> movies;
   final String? titulo;
-
+  final Function onNextPage;
   const MovieSlider({
     super.key,
     required this.movies,
-    this.titulo,
+    this.titulo, 
+    required this.onNextPage,
   });
 
   @override
+  State<MovieSlider> createState() => _MovieSliderState();
+}
+
+class _MovieSliderState extends State<MovieSlider> {
+  final ScrollController contro_scroll = new ScrollController(); 
+ @override
+void initState() {
+ super.initState();
+ // Variable que almacenara el valor de maxScrollExtent al momento de llamar onNextPage()
+ double? maxScrollTemp;
+ contro_scroll.addListener(() {
+   double positionScroll = contro_scroll.position.pixels;
+   double maxScroll = contro_scroll.position.maxScrollExtent;
+   if (positionScroll >= maxScroll - 600) {
+     // Si maxScrollTemp es null, es porque no se ha llamado a onNextPage()
+     // Por otro lado sera cierto si maxScrollTemp es igual a maxScroll
+     if (maxScrollTemp == maxScroll) {
+       return;
+     } else {
+       widget.onNextPage();
+       // Almacenamos el valor de maxScroll en el momento de llamar a onNextPage()
+       maxScrollTemp = maxScroll;
+     }
+   }
+ });
+}
+
+  // @override
+  // void dispose() { //cuando el widget es destruido 
+   
+  //   super.dispose();
+  // }
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
@@ -25,21 +55,22 @@ class MovieSlider extends StatelessWidget {
       child:  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children:  [
-          if(titulo != null)
+          if(widget.titulo != null)
           Padding(
             
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Text(titulo!,style: const TextStyle(color: Colors.black, fontSize: 30)),
+            child: Text(widget.titulo!,style: const TextStyle(color: Colors.black, fontSize: 30)),
             
             
           ),
           const SizedBox(height: 5),
           Expanded(
-            child: ListView.builder (
+            child: ListView.builder ( // este es el que construye el slider 
+              controller: contro_scroll,
               scrollDirection: Axis.horizontal,
-              itemCount: movies.length,
+              itemCount: widget.movies.length,
               itemBuilder: ( _ , int index){
-                return  _MoviePoster( movie: movies[index]);
+                return  _MoviePoster( movie: widget.movies[index]);
               },
               
               
