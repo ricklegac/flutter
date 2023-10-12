@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:peliculas/providers/movies_provider.dart';
 import 'package:peliculas/screens/screens.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
-
-void main() => runApp( AppState());
+void main() {
+  Intl.defaultLocale = 'es'; // Set the default locale
+  runApp(AppState());
+}
 class AppState extends StatelessWidget {
 
 

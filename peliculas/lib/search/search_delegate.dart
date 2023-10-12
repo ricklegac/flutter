@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class MovieSearchDelegate extends SearchDelegate{
+
+  @override
+  String get searchFieldLabel => Intl.message('Buscar Película', name: 'buscar_pelicula');
+
   @override
   List<Widget>? buildActions(BuildContext context) { //lista de widgets 
     return [ 
