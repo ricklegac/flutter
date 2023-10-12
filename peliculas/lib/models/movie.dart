@@ -61,7 +61,7 @@ class Result {
       }
     }
     get fullBackdropPath{
-      if(posterPath != null){
+      if(backdropPath != null){
         return 'https://image.tmdb.org/t/p/w500${this.backdropPath}';
       }
       else{
@@ -70,40 +70,4 @@ class Result {
     }
 
 
-    // Map<String, dynamic> toJson() => {
-    //     "adult": adult,
-    //     "backdrop_path": backdropPath,
-    //     "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
-    //     "id": id,
-    //     "original_language": originalLanguageValues.reverse[originalLanguage],
-    //     "original_title": originalTitle,
-    //     "overview": overview,
-    //     "popularity": popularity,
-    //     "poster_path": posterPath,
-    //     "release_date": "${releaseDate.year.toString().padLeft(4, '0')}-${releaseDate.month.toString().padLeft(2, '0')}-${releaseDate.day.toString().padLeft(2, '0')}",
-    //     "title": title,
-    //     "video": video,
-    //     "vote_average": voteAverage,
-    //     "vote_count": voteCount,
-    // };
 }
-
-// enum OriginalLanguage {
-//     EN
-// }
-
-// final originalLanguageValues = EnumValues({
-//     "en": OriginalLanguage.EN
-// });
-
-// class EnumValues<T> {
-//     Map<String, T> map;
-//     late Map<T, String> reverseMap;
-
-//     EnumValues(this.map);
-
-//     Map<T, String> get reverse {
-//         reverseMap = map.map((k, v) => MapEntry(v, k));
-//         return reverseMap;
-//     }
-// }
