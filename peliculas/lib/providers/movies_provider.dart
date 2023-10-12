@@ -3,41 +3,22 @@ import 'package:http/http.dart' as http;
 import 'package:peliculas/models/movie.dart';
 import 'package:peliculas/models/now_playing_response.dart';
 import 'dart:convert';
+import 'package:peliculas/models/models.dart';
 
-import 'package:peliculas/models/popular_response.dart';
-//import 'package:peliculas/models/models.dart';
-
-//import 'package:peliculas/models/popular_response.dart';
 class MovieProvider extends ChangeNotifier{ // para que sea un provider debe de extender de changenotifier
   final _apiKey = 'dce3b23572e77f35d099620c9feae51d';
   final _baseUrl = 'api.themoviedb.org';
   final _language = 'es-ES';
   List<Result> onDisplayMovies= [];
   List<Result> popularMovies =[];
+  Map<int, List<Cast>>  moviesCast = {} ;
   int _popularpage =0 ;
   MovieProvider(){
-    //print('movie provider inicializado');
+    
     getPopularMovies();
     getNowPlaying();
-    }
-
-  Future<String> _getJsonData(String endpoint, [int page = 1] ) async 
-  { 
-  // se pone entre llaves [int page = 1] cuando es opcional
-  // si no viene nada entonces toma como 1 el page 
-    var url = Uri.https(
-      _baseUrl, endpoint,
-      {
-        'api_key': _apiKey,
-        'language': _language,
-        'page':'$page'
-      }
-    );
-    final response = await http.get(url);
-    String jsonString = response.body;
-    return jsonString;
+    
   }
-
 
   Future<Map<String, dynamic>> _fetchData(String endpoint,[page = 1]) async {
   var url = Uri.https(
@@ -55,6 +36,17 @@ class MovieProvider extends ChangeNotifier{ // para que sea un provider debe de 
   } else {
     throw Exception('Failed to fetch data from $endpoint');
   }
+}
+Future<String> _getJsonData_cast(String endPoint,[int page = 1]) async{ 
+ 
+  var url = Uri.https(_baseUrl, endPoint, {
+      'api_key': _apiKey,
+      'language': _language,
+      'page': '$page',
+  });
+  print('esta es la url $url');
+  final response = await http.get(url);
+  return response.body;
 }
 
 Future<void> getNowPlaying() async {
@@ -80,6 +72,24 @@ Future<void> getPopularMovies() async {
   }
 }
 
+Future<List<Cast>> getMovieCast(int movieId) async {
+
+    print(movieId);
+    try{
+      if( moviesCast.containsKey(movieId) ) return moviesCast[movieId]!;
+      String jsonData = await _getJsonData_cast('3/movie/$movieId/credits');
+      final creditsResponse = CreditsResponse.fromJson( jsonData );
+      moviesCast[movieId] = creditsResponse.cast;
+      return creditsResponse.cast;
+    }catch (e){
+      print('este error: $e');
+      return [];
+    }
+    
+
+    
+   
 
 
+}
 }
