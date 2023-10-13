@@ -9,7 +9,10 @@ class MovieSearchDelegate extends SearchDelegate{
   @override
   List<Widget>? buildActions(BuildContext context) { //lista de widgets 
     return [ 
-      const Text('buildActions')
+      IconButton(
+        icon: const Icon(Icons.delete),
+        onPressed: () => query='',
+      )
     
     ];
    
@@ -17,20 +20,32 @@ class MovieSearchDelegate extends SearchDelegate{
 
   @override
   Widget? buildLeading(BuildContext context) { // widget
-    return const Text('buildLeading');
-    //throw UnimplementedError();
+    return IconButton(
+      onPressed: () {
+        close(context, null);
+      }, 
+      icon: const Icon(Icons.arrow_back),
+      );
   }
 
   @override
   Widget buildResults(BuildContext context) { // widget 
-    return const Text('buildResults');
+    return  Text('buildResults $query');
     //throw UnimplementedError();
   }
 
   @override
   Widget buildSuggestions(BuildContext context) { //widget 
-    return const Text('buildSuggestions');
-   // throw UnimplementedError();
+    if (query.isEmpty){
+      return const Center(
+        child: Icon(
+        Icons.movie_creation_outlined, 
+        color: Colors.black, 
+        size: 300,
+        ),
+      );
+    }
+    return const Center();
   }
 
 }

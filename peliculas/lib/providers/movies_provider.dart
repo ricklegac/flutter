@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:peliculas/models/movie.dart';
 import 'package:peliculas/models/now_playing_response.dart';
 import 'dart:convert';
 import 'package:peliculas/models/models.dart';
+import 'package:peliculas/models/search_response.dart';
 
 class MovieProvider extends ChangeNotifier{ // para que sea un provider debe de extender de changenotifier
   final _apiKey = 'dce3b23572e77f35d099620c9feae51d';
@@ -72,7 +72,7 @@ Future<void> getPopularMovies() async {
   }
 }
 
-Future<List<Cast>> getMovieCast(int movieId) async {
+  Future<List<Cast>> getMovieCast(int movieId) async {
 
     print(movieId);
     try{
@@ -87,9 +87,23 @@ Future<List<Cast>> getMovieCast(int movieId) async {
     }
     
 
+  }
+
+  Future<List<Result>> searchMovies (String query) async {
+    final url = Uri.https(_baseUrl, '3/search/movie', {
+       'api_key': _apiKey,
+      'language': _language,
+      'query': query 
+    },
     
-   
+    );
 
+    final response = await http.get(url);
+    final jsonString = response.body;
+    Map<String, dynamic> jsonMap = json.decode(jsonString);
+    SearchResponse searchResponse = SearchResponse.fromJson(jsonMap);
+    return searchResponse.results;
 
-}
+    
+  }
 }
