@@ -32,6 +32,8 @@ class Result {
     double voteAverage;
     int voteCount;
 
+    String? heroId;
+
     factory Result.fromRawJson(String str) => Result.fromJson(json.decode(str));
 
     //String toRawJson() => json.encode(toJson());
