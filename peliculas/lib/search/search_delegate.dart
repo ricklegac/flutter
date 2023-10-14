@@ -86,10 +86,14 @@ class _MovieItem extends StatelessWidget {
       leading: FadeInImage(
         placeholder: const AssetImage('assets/no-image.jpg'),
         image: NetworkImage(movie.fullPosterImg),
-        width: 50 ,
+        width: 200,
         fit: BoxFit.contain,
       ),
-
+    title: Text(movie.title),
+    // ignore: avoid_print
+    onTap: () {
+      Navigator.pushNamed(context, 'DetailScreen', arguments: movie);
+    },
 
     );
   }
