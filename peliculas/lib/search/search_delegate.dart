@@ -49,12 +49,17 @@ class MovieSearchDelegate extends SearchDelegate{
 
   @override
   Widget buildSuggestions(BuildContext context) { //widget 
+    print('buildsuggestion');
     if (query.isEmpty){
       return _emptyCenter();
     }
+
     final moviesProvider = Provider.of<MovieProvider>(context, listen: false);
-    return FutureBuilder(
-      future: moviesProvider.searchMovies(query), // es lo que necesito llamar cada vez que este widget se dispara 
+    moviesProvider.getSuggestionByQuery(query); // esto se llama cada vez que se toca una tecla
+    
+      return StreamBuilder(
+      stream: moviesProvider.suggestionStream, // desde el streambuilder que esta en movies_provider necesito llamar
+      //se dispara cuando stream emite un valor!
       builder: (_, AsyncSnapshot<List<Result>> snapshot) {
         if(!snapshot.hasData){
           return _emptyCenter();

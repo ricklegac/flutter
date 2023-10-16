@@ -1,5 +1,9 @@
+import 'dart:async';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:peliculas/helper/debouncer.dart';
 import 'package:peliculas/models/now_playing_response.dart';
 import 'dart:convert';
 import 'package:peliculas/models/models.dart';
@@ -13,6 +17,12 @@ class MovieProvider extends ChangeNotifier{ // para que sea un provider debe de 
   List<Result> popularMovies =[];
   Map<int, List<Cast>>  moviesCast = {} ;
   int _popularpage =0 ;
+  final debouncer = Debouncer(
+    duration: const Duration(milliseconds: 500),
+    //onValue:  //que yo quiero hacer cuando se dispare
+  );
+  final StreamController<List<Result>> _suggestionStreamController = new StreamController.broadcast(); // el stream controller en algun punto se debe de cerrar
+  Stream<List<Result>> get suggestionStream => _suggestionStreamController.stream;
   MovieProvider(){
     
     getPopularMovies();
@@ -89,7 +99,8 @@ Future<void> getPopularMovies() async {
 
   }
 
-  Future<List<Result>> searchMovies (String query) async {
+  Future<List<Result>> searchMovies (String query) async { // de alguna manera tiene que retornar un Stream
+  //el stream es el que emite el valor 
     final url = Uri.https(_baseUrl, '3/search/movie', {
        'api_key': _apiKey,
       'language': _language,
@@ -105,5 +116,24 @@ Future<void> getPopularMovies() async {
     return searchResponse.results;
 
     
+  }
+
+  void getSuggestionByQuery(String searchTerm ){
+    debouncer.value = '';
+    debouncer.onValue =  (value )   async {
+      //cuando el debouncer emita un valor
+      print('tenemos un valor a buscar $value'); 
+
+      final result = await this.searchMovies(value);
+      this._suggestionStreamController.add(result);
+    };
+
+    final timer = Timer.periodic(Duration(milliseconds: 300), ( _ ) {
+      // cada vez que pasa este tiempo hago:
+      debouncer.value = searchTerm;
+
+     });
+
+     Future.delayed(Duration(milliseconds: 301)).then((_) => timer.cancel());
   }
 }
