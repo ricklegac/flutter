@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         'home_screen'   : (BuildContext context) => const HomeScreen(),
       },
       title: 'Material App',
-      initialRoute: 'scroll_design',
+      initialRoute: 'home_screen',
       
     );
   }
