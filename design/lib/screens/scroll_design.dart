@@ -6,14 +6,30 @@ class ScrollScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    const boxDecoration = BoxDecoration(
+        gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        stops: [0.5,0.5],
+        colors: [
+          Color.fromRGBO(123, 236, 203,1.0),
+          Color.fromRGBO(79, 194, 221, 1.0 ),
+        ])
+    );
     return  Scaffold(
-      body: PageView(
-        scrollDirection: Axis.vertical,
-        children: const [
-          Page1(),
-          Page2(),
-        ],
-        
+      body: Container(
+        decoration: boxDecoration,
+        child: PageView(
+          scrollDirection: Axis.vertical,
+          physics: const BouncingScrollPhysics( // efecto de rebote hacia arriba o abajo 
+            decelerationRate: ScrollDecelerationRate.fast,
+          ),
+          children: const [
+            Page1(),
+            Page2(),
+          ],
+          
+        ),
       )
     );
       
@@ -25,8 +41,26 @@ class Page2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const textStyle = TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.white, decoration: TextDecoration.none);
     return Container(
       color: const Color.fromRGBO(79, 194, 221, 1.0 ),
+      child: Center(
+        child: TextButton(
+          onPressed: () {},
+            style: ElevatedButton.styleFrom(
+            primary: Colors.blue, // Cambia el color de fondo del botón.
+            onPrimary: Colors.white, // Cambia el color del texto del botón.
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10), // Cambia el espacio interior del botón.
+            shape: RoundedRectangleBorder(
+             borderRadius: BorderRadius.circular(30), 
+             
+            ),
+            // Cambia la forma del botón.
+          ),
+          child: const Text('presionar', style: textStyle,),
+        ),
+
+      ),
     );
   }
 }
