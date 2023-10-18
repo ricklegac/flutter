@@ -11,8 +11,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        'basic_design': (BuildContext context) => BasicScreen(),
-        'scroll_design': (BuildContext context) => ScrollScreen(),
+        'basic_design'  : (BuildContext context) => const BasicScreen(),
+        'scroll_design' : (BuildContext context) => const ScrollScreen(),
+        'home_screen'   : (BuildContext context) => const HomeScreen(),
       },
       title: 'Material App',
       initialRoute: 'scroll_design',
