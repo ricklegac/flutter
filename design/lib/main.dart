@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         'scroll_design': (BuildContext context) => ScrollScreen(),
       },
       title: 'Material App',
-      initialRoute: 'basic_design',
+      initialRoute: 'scroll_design',
       
     );
   }
