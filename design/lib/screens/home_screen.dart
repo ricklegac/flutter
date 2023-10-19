@@ -7,15 +7,19 @@ class HomeScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return const Stack(
-      children: [
-        //background 
-        Background(), 
-
-        _HomeBody(),
-      ],
-
+    return const Scaffold(
+      body:  Stack(
+        children: [
+          //background 
+          Background(), 
+    
+          _HomeBody(),
+        ],
+        
+      ),
+      bottomNavigationBar:CustomNavigation(),
     );
+    
   }
 }
 
@@ -28,6 +32,7 @@ class _HomeBody extends StatelessWidget {
       child: Column(
         children: [
           PageTile(),
+          
         ],
       ),
     );
