@@ -1,4 +1,4 @@
-import 'package:design/widgets/background.dart';
+import 'package:design/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,9 +10,26 @@ class HomeScreen extends StatelessWidget {
     return const Stack(
       children: [
         //background 
-        Background()
+        Background(), 
+
+        _HomeBody(),
       ],
 
+    );
+  }
+}
+
+class _HomeBody extends StatelessWidget {
+  const _HomeBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SingleChildScrollView(
+      child: Column(
+        children: [
+          PageTile(),
+        ],
+      ),
     );
   }
 }
