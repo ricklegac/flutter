@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 class CardTable extends StatelessWidget {
   const CardTable({super.key});
@@ -28,6 +30,16 @@ class CardTable extends StatelessWidget {
             
             //_SingleCard(),
           ],
+          
+          ),
+          TableRow(
+          children:  [
+            _SingleCard(text: 'Entertainment',icon: Icon(Icons.tap_and_play_sharp), colorboton: Color.fromRGBO(79 ,120 ,255,1),),
+            _SingleCard(text: 'Grocery',icon: Icon(Icons.local_grocery_store), colorboton: Color.fromRGBO(80 ,235 ,114,1),),
+            
+            //_SingleCard(),
+          ],
+          
           ),
 
        
@@ -51,27 +63,36 @@ class _SingleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextStyle textStyle = TextStyle(color: colorboton, fontSize: 20);
     return Container(
-      
-      margin: const EdgeInsets.all(20),
-      height: 180,
-      decoration:  BoxDecoration(
-        color: const  Color.fromRGBO(62, 66, 107, 0.7),
-        borderRadius: BorderRadius.circular(30),
-
-      ),
-      child:  Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-
-        children: [
-          CircleAvatar(
-            backgroundColor: colorboton,
-            radius: 30,
-            child: icon,  
+      margin: const EdgeInsets.all(15),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5,sigmaY: 5),
+          child: Container(
             
+            //margin: const EdgeInsets.all(20),
+            height: 180,
+            decoration:  BoxDecoration(
+              color: const  Color.fromRGBO(62, 66, 107, 0.7),
+              borderRadius: BorderRadius.circular(30),
+            
+            ),
+            child:  Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+            
+              children: [
+                CircleAvatar(
+                  backgroundColor: colorboton,
+                  radius: 30,
+                  child: icon,  
+                  
+                ),
+                const SizedBox(height: 20,),
+                Text(text, style: textStyle),
+              ],
+            ),
           ),
-          const SizedBox(height: 20,),
-          Text(text, style: textStyle),
-        ],
+        ),
       ),
     );
   }
