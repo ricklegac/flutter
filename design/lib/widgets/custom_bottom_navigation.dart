@@ -6,6 +6,10 @@ class CustomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      //showSelectedLabels: false,
+      showUnselectedLabels: false,
+      backgroundColor: const Color.fromRGBO(55, 57, 84, 1),
+      unselectedItemColor: const Color.fromRGBO(116, 117, 152, 1),
       selectedItemColor: Colors.red,
       items: const [
         
