@@ -14,6 +14,8 @@ class HomeScreen extends StatelessWidget {
           Background(), 
     
           _HomeBody(),
+
+          
         ],
         
       ),
@@ -33,6 +35,7 @@ class _HomeBody extends StatelessWidget {
         children: [
           PageTile(),
           
+          CardTable(),
         ],
       ),
     );
