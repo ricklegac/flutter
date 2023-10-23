@@ -5,6 +5,18 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        title: const Text('Historial'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.delete_forever),
+            ), 
+        ],
+
+      ),
+    );
   }
 }
