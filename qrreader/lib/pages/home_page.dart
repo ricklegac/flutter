@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //backgroundColor: Colors.green,
         elevation: 0,
         title: const Text('Historial'),
         actions: [
@@ -18,7 +19,8 @@ class HomePage extends StatelessWidget {
         ],
 
       ),
-      bottomNavigationBar: CustomNavigationBar(),
+      bottomNavigationBar: const CustomNavigationBar(),
+      floatingActionButton: const ScanBottom(),
     );
   }
 }

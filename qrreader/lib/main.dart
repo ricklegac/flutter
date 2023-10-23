@@ -15,9 +15,17 @@ class MyApp extends StatelessWidget {
       routes: {
         'home':( _ ) => const HomePage(),
         'mapas': ( _ ) => const MapaPage(),
-      }
+      },
       
-     
+      theme: ThemeData(
+        primaryColor: Colors.green,
+        primarySwatch: Colors.green,
+        floatingActionButtonTheme:const  FloatingActionButtonThemeData(
+          backgroundColor: Colors.green,
+          
+        )
+
+      ) , 
     );
   }
 }
