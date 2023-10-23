@@ -1,3 +1,4 @@
+import 'package:qrreader/pages/pages.dart';
 import 'package:qrreader/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,8 +18,9 @@ class HomePage extends StatelessWidget {
             ),
             
         ],
-
+    
       ),
+      body: const DireccionesPage(),
       bottomNavigationBar: const CustomNavigationBar(),
       floatingActionButton: const ScanBottom(),
     );
