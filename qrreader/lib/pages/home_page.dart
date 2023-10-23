@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qrreader/widgets/custom_nav_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,11 +13,13 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.delete_forever),
-            ), 
+            icon: const  Icon(Icons.delete_forever),
+            ),
+            
         ],
 
       ),
+      bottomNavigationBar: CustomNavigationBar(),
     );
   }
 }
