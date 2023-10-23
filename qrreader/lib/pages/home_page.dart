@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:qrreader/widgets/custom_nav_bar.dart';
+import 'package:qrreader/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
