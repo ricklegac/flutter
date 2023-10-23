@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qrreader/pages/pages.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,15 +9,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      title: 'QR Reader',
+      initialRoute: 'home',
+      routes: {
+        'home':( _ ) => const HomePage(),
+        'mapas': ( _ ) => const MapaPage(),
+      }
+      
+     
     );
   }
 }
