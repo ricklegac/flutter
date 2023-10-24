@@ -2,7 +2,7 @@ import 'package:qrreader/widgets/widgets.dart';
 
 export 'package:flutter/material.dart';
 class UiProvider extends ChangeNotifier{
-  int _selectedMenuOpt = 0;
+  int _selectedMenuOpt = 1;
   int get selectedMenuOpt{
     return this._selectedMenuOpt;
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qrreader/pages/pages.dart';
 import 'package:provider/provider.dart';
+import 'package:qrreader/providers/ui_provider.dart';
 
 void main() => runApp(const MyApp());
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider
+        ChangeNotifierProvider(create: (_) => UiProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

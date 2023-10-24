@@ -1,4 +1,6 @@
+import 'package:provider/provider.dart';
 import 'package:qrreader/pages/pages.dart';
+import 'package:qrreader/providers/ui_provider.dart';
 import 'package:qrreader/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
@@ -31,7 +33,8 @@ class _BodyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentindex =1;
+    final uiprovider = Provider.of<UiProvider>(context);
+    final currentindex =uiprovider.selectedMenuOpt;
     switch(currentindex){
       case 0:
         return MapasPage();
