@@ -6,7 +6,7 @@ class CustomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final currrentIndex = 1;
     return BottomNavigationBar(
-      currentIndex: currrentIndex,
+      currentIndex: currrentIndex ,
       elevation: 0,
       items: const [
         BottomNavigationBarItem(
