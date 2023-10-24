@@ -20,9 +20,25 @@ class HomePage extends StatelessWidget {
         ],
     
       ),
-      body: const DireccionesPage(),
+      body: _BodyPage(),
       bottomNavigationBar: const CustomNavigationBar(),
       floatingActionButton: const ScanBottom(),
     );
+  }
+}
+class _BodyPage extends StatelessWidget {
+  
+
+  @override
+  Widget build(BuildContext context) {
+    final currentindex =1;
+    switch(currentindex){
+      case 0:
+        return MapasPage();
+      case 1: 
+        return DireccionesPage();
+      default:
+        return MapasPage();
+    }
   }
 }
