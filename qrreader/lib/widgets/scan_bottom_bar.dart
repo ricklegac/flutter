@@ -8,7 +8,13 @@ class ScanBottom extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       child: const Icon(Icons.filter_center_focus),
-      onPressed: () {},
+      onPressed:  () async {
+        // String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+        //                                             COLOR_CODE, 
+        //                                             CANCEL_BUTTON_TEXT, 
+        //                                             isShowFlashIcon, 
+        //                                             scanMode);
+      },
     );
   }
 }
