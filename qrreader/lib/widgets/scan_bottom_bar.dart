@@ -9,11 +9,12 @@ class ScanBottom extends StatelessWidget {
     return FloatingActionButton(
       child: const Icon(Icons.filter_center_focus),
       onPressed:  () async {
-        // String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-        //                                             COLOR_CODE, 
-        //                                             CANCEL_BUTTON_TEXT, 
-        //                                             isShowFlashIcon, 
-        //                                             scanMode);
+        String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+                                                    '#3D8BEF', 
+                                                    'CANCEL_BUTTON_TEXT', 
+                                                    false, 
+                                                    ScanMode.QR);   
+        print(barcodeScanRes);
       },
     );
   }
