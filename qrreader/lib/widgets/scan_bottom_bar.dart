@@ -11,7 +11,7 @@ class ScanBottom extends StatelessWidget {
       onPressed:  () async {
         String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
                                                     '#3D8BEF', 
-                                                    'CANCEL_BUTTON_TEXT', 
+                                                    'Cancelar', 
                                                     false, 
                                                     ScanMode.QR);   
         print(barcodeScanRes);
