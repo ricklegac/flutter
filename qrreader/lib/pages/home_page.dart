@@ -1,5 +1,7 @@
 import 'package:provider/provider.dart';
+import 'package:qrreader/models/scan_model.dart';
 import 'package:qrreader/pages/pages.dart';
+import 'package:qrreader/providers/db_provider.dart';
 import 'package:qrreader/providers/ui_provider.dart';
 import 'package:qrreader/widgets/widgets.dart';
 
@@ -35,6 +37,9 @@ class _BodyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final uiprovider = Provider.of<UiProvider>(context);
     final currentindex =uiprovider.selectedMenuOpt;
+     final tempsearch = SearchResponse(valor: 'http://www.google.com.py');
+    DBProvider.db.nuevoScan(tempsearch);
+    
     switch(currentindex){
       case 0:
         return MapasPage();

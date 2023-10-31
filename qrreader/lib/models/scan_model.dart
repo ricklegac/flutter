@@ -5,16 +5,16 @@ SearchResponse searchResponseFromJson(String str) => SearchResponse.fromJson(jso
 String searchResponseToJson(SearchResponse data) => json.encode(data.toJson());
 
 class SearchResponse {
-    int id;
-    String tipo;
+    int? id;
+    String? tipo;
     String valor;
 
     SearchResponse({
-        required this.id,
-        required this.tipo,
+         this.id,
+         this.tipo,
         required this.valor,
     }){
-      if(this.tipo.contains("http")){
+      if(this.valor.contains("http")){
         this.tipo = 'http';
       }else{
         this.tipo='geo';
