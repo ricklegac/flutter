@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+//import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:qrreader/models/scan_model.dart';
 import 'package:sqflite/sqflite.dart';
@@ -34,20 +34,20 @@ class DBProvider{
       onCreate: (Database db, int version) async {
         await db.execute(
           '''
-            CREATE TABLE Scans(
-              id INTEGER PRYMARY KEY AUTOINCREMENT,
-              tipo TEXT,
-              valor TEXT
-            );
-          '''
+          CREATE TABLE Scans(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            tipo TEXT,
+            valor TEXT
+          )
+        '''
         );
 
       },
       );    
-
+    
 
   }
-  Future<int>NuevoScanRaw(SearchResponse nuevoscan) async{
+  Future<int>nuevoScanRaw(SearchResponse nuevoscan) async{
     final id = nuevoscan.id;
     final tipo = nuevoscan.tipo;
     final valor = nuevoscan.valor;
@@ -62,9 +62,13 @@ class DBProvider{
   }
   Future<int>nuevoScan(SearchResponse nuevoscan)async{
     final db = await database;
+    
     final res = await db.insert(
       'Scans', nuevoscan.toJson()
+      
     );
+    nuevoscan.setId(res);
+    print(res);
     return res;
 
   }

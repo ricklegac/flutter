@@ -37,8 +37,9 @@ class _BodyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final uiprovider = Provider.of<UiProvider>(context);
     final currentindex =uiprovider.selectedMenuOpt;
-     final tempsearch = SearchResponse(valor: 'http://www.google.com.py');
+    final tempsearch = SearchResponse(valor: 'http://www.tttt.com.py',);
     DBProvider.db.nuevoScan(tempsearch);
+    print("este es el id: ${tempsearch.id}");
     
     switch(currentindex){
       case 0:

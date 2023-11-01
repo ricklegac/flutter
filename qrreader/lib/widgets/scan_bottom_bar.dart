@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+//import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class ScanBottom extends StatelessWidget {
   const ScanBottom({super.key});
@@ -14,7 +14,7 @@ class ScanBottom extends StatelessWidget {
         //                                             'Cancelar', 
         //                                             false, 
         //                                             ScanMode.QR);   
-        final barcodeScanRes = 'www.google.com.py';
+        final barcodeScanRes = 'www.ggg.com.py';
         print(barcodeScanRes);
       },
     );
