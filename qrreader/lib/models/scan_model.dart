@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:qrreader/providers/db_provider.dart';
+//import 'package:qrreader/providers/db_provider.dart';
 
 SearchResponse searchResponseFromJson(String str) => SearchResponse.fromJson(json.decode(str));
 
