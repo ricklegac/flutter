@@ -60,17 +60,17 @@ class DBProvider{
     return res;
 
   }
-  Future<int>nuevoScan(SearchResponse nuevoscan)async{
-    final db = await database;
-    
-    final res = await db.insert(
-      'Scans', nuevoscan.toJson()
+    Future<int>nuevoScan(SearchResponse nuevoscan)async{
+      final db = await database;
       
-    );
-    nuevoscan.setId(res);
-    print(res);
-    return res;
+      final res = await db.insert(
+        'Scans', nuevoscan.toJson()
+        
+      );
+      //nuevoscan.setId(res);
+      print(res);
+      return res;
 
-  }
+    }
 }
 
