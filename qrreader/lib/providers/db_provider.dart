@@ -110,12 +110,12 @@ Future<List<SearchResponse>> getAllId() async {
   }
 }
 
-Future<List<SearchResponse>> getAllTipos(String tipo) async {
+Future<List<SearchResponse>> getAllTipos() async {
   try {
     final db = await database;
     final res = await db.rawQuery('''
       SELECT * FROM Scans 
-      WHERE tipo = $tipo
+     
     ''');
 
     return res.map((s)=>SearchResponse.fromJson(s)).toList();

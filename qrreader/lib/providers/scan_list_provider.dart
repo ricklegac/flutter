@@ -16,6 +16,15 @@ class ScanListProvider extends ChangeNotifier{
       this.scans.add(nuevoScan);
       notifyListeners(); // se necesita redibujarse
     }
+    cargarScans()async{
+      final db = await DBProvider.db.getAllTipos();
+      this.scans = [...scans];
+      notifyListeners();
+    }
+    cargarScansPorTipo(){
+
+      
+    }
     
     
   }
