@@ -34,11 +34,11 @@ class DBProvider{
       onCreate: (Database db, int version) async {
         await db.execute(
           '''
-          CREATE TABLE Scans(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+          CREATE TABLE Scans (
+            id INTEGER PRIMARY KEY,
             tipo TEXT,
             valor TEXT
-          )
+         )
         '''
         );
 
@@ -47,6 +47,29 @@ class DBProvider{
     
 
   }
+  Future<int> nuevoScan(SearchResponse nuevoscan) async {
+    final db = await database;
+    //print(db);
+    final res = await db.insert('Scans', nuevoscan.toJson());
+
+    // Update the id of the SearchResponse object with the value from the database.
+    nuevoscan.setId(res);
+
+    print(res);
+    return res;
+  }
+  Future<int> nuevoScan2(SearchResponse nuevoscan) async {
+  final db = await database;
+  final res = await db.insert('Scans', nuevoscan.toJson());
+
+  // Retrieve the last inserted ID using the 'last_insert_rowid()' SQL function.
+  final lastInsertedId = Sqflite.firstIntValue(await db.rawQuery('SELECT last_insert_rowid()'));
+
+  // Update the ID of the SearchResponse object with the last inserted ID.
+  nuevoscan.setId(lastInsertedId!);
+
+  return lastInsertedId;
+}
   Future<int>nuevoScanRaw(SearchResponse nuevoscan) async{
     final id = nuevoscan.id;
     final tipo = nuevoscan.tipo;
@@ -60,17 +83,53 @@ class DBProvider{
     return res;
 
   }
-    Future<int>nuevoScan(SearchResponse nuevoscan)async{
-      final db = await database;
-      
-      final res = await db.insert(
-        'Scans', nuevoscan.toJson()
-        
-      );
-      //nuevoscan.setId(res);
-      print(res);
-      return res;
+ 
 
-    }
+Future<SearchResponse?> getScanById(int id) async {
+  try {
+    final db = await database;
+    final res = await db.query('Scans', where: 'id = ?', whereArgs: [id]);
+
+    return res.isNotEmpty ? SearchResponse.fromJson(res.first) : null;
+  } catch (e) {
+    // Handle any exceptions here, you can log or return null as needed.
+    return null;
+  }
+
+  
+}
+Future<List<SearchResponse>> getAllId() async {
+  try {
+    final db = await database;
+    final res = await db.query('Scans');
+
+    return res.map((s)=>SearchResponse.fromJson(s)).toList();
+  } catch (e) {
+    // Handle any exceptions here, you can log or return null as needed.
+    return [];
+  }
 }
 
+Future<List<SearchResponse>> getAllTipos(String tipo) async {
+  try {
+    final db = await database;
+    final res = await db.rawQuery('''
+      SELECT * FROM Scans 
+      WHERE tipo = $tipo
+    ''');
+
+    return res.map((s)=>SearchResponse.fromJson(s)).toList();
+  } catch (e) {
+    // Handle any exceptions here, you can log or return null as needed.
+    return [];
+  }
+}
+Future<int> updateScan(SearchResponse nuevoScan) async {
+  final db = await database;
+  final res = await db.update('Scans', nuevoScan.toJson(), where: 'id = ?', whereArgs: [nuevoScan.id]);
+  return res;
+
+}
+
+
+}

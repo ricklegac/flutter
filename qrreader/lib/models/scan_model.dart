@@ -1,5 +1,7 @@
 import 'dart:convert';
-//import 'package:qrreader/providers/db_provider.dart';
+
+
+
 
 SearchResponse searchResponseFromJson(String str) => SearchResponse.fromJson(json.decode(str));
 
@@ -34,10 +36,11 @@ class SearchResponse {
         tipo: json["tipo"],
         valor: json["valor"],
     );
+    
     void setId(int id) {
+      
       this.id = id;
     }
-
     Map<String, dynamic> toJson() => {
         "id": id,
         "tipo": tipo,
