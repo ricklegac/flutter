@@ -60,7 +60,7 @@ class DBProvider{
   }
   Future<int> nuevoScan2(SearchResponse nuevoscan) async {
   final db = await database;
-  final res = await db.insert('Scans', nuevoscan.toJson());
+  //final res = await db.insert('Scans', nuevoscan.toJson());
 
   // Retrieve the last inserted ID using the 'last_insert_rowid()' SQL function.
   final lastInsertedId = Sqflite.firstIntValue(await db.rawQuery('SELECT last_insert_rowid()'));
