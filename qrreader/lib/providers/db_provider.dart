@@ -131,5 +131,19 @@ Future<int> updateScan(SearchResponse nuevoScan) async {
 
 }
 
+Future<int> deleteScan(int id) async{
+  final db = await database;
+  final res = await db.delete('Scans', where: 'id = ?', whereArgs: [id]);
+  return res;
+
+}
+
+Future<int> deleteAllScan() async{
+  final db = await database;
+  final res = await db.delete('Scans');
+  return res;
+
+}
+
 
 }
