@@ -6,8 +6,19 @@ class MapasPage extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('mapas'),
-    );
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (_, int index) => ListTile(
+        leading: Icon(Icons.map, color: Theme.of(context).primaryColor),
+        title: const Text('cualquoer cosa'),
+        subtitle: const Text('id'),
+        trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.grey,),
+        onTap: () {
+          print("abriendo");
+        },
+        ),
+        //title: Text('http'),
+      );
+    
   }
 }

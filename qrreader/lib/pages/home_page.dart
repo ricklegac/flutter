@@ -2,8 +2,10 @@ import 'package:provider/provider.dart';
 import 'package:qrreader/models/scan_model.dart';
 import 'package:qrreader/pages/pages.dart';
 import 'package:qrreader/providers/db_provider.dart';
+import 'package:qrreader/providers/scan_list_provider.dart';
 import 'package:qrreader/providers/ui_provider.dart';
 import 'package:qrreader/widgets/widgets.dart';
+import 'package:qrreader/providers/scan_list_provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -40,11 +42,13 @@ class _BodyPage extends StatelessWidget {
     final tempsearch = SearchResponse(valor: 'http://www.tttt.com.py',);
     DBProvider.db.deleteAllScan();
     print("este es el id: ${tempsearch.id}");
-    
+    final scanListProvider = Provider.of<ScanListProvider>(context, listen: false); 
     switch(currentindex){
       case 0:
+        scanListProvider.cargarScansPorTipo('geo');
         return MapasPage();
       case 1: 
+      scanListProvider.cargarScansPorTipo('http');
         return DireccionesPage();
       default:
         return MapasPage();

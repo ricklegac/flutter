@@ -1,6 +1,7 @@
 
 import 'package:qrreader/pages/pages.dart';
 import 'package:provider/provider.dart';
+import 'package:qrreader/providers/scan_list_provider.dart';
 import 'package:qrreader/providers/ui_provider.dart';
 
 void main() => runApp(const MyApp());
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => UiProvider()),
+         ChangeNotifierProvider(create: (_) => ScanListProvider()), // cualquier widget que este dentro del proyecto 
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
