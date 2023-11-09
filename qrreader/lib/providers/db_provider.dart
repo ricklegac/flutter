@@ -83,7 +83,17 @@ class DBProvider{
     return res;
 
   }
- 
+   Future<List<SearchResponse>> getScansPorTipo( String tipo ) async {
+
+    final db  = await database;
+    final res = await db.rawQuery('''
+      SELECT * FROM Scans WHERE tipo = '$tipo'    
+    ''');
+
+    return res.isNotEmpty
+          ? res.map( (s) => SearchResponse.fromJson(s) ).toList()
+          : [];
+  }
 
 Future<SearchResponse?> getScanById(int id) async {
   try {
