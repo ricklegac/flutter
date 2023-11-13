@@ -1,7 +1,7 @@
 import 'package:provider/provider.dart';
-import 'package:qrreader/models/scan_model.dart';
+
 import 'package:qrreader/pages/pages.dart';
-import 'package:qrreader/providers/db_provider.dart';
+
 import 'package:qrreader/providers/scan_list_provider.dart';
 import 'package:qrreader/providers/ui_provider.dart';
 import 'package:qrreader/widgets/widgets.dart';
