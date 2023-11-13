@@ -39,16 +39,13 @@ class _BodyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final uiprovider = Provider.of<UiProvider>(context);
     final currentindex =uiprovider.selectedMenuOpt;
-    //final tempsearch = SearchResponse(valor: 'http://www.tttt.com.py',);
-    // DBProvider.db.deleteAllScan();
-    // print("este es el id: ${tempsearch.id}");
     final scanListProvider = Provider.of<ScanListProvider>(context, listen: false); 
     switch(currentindex){
       case 0:
         scanListProvider.cargarScansPorTipo('geo');
         return MapasPage();
       case 1: 
-      scanListProvider.cargarScansPorTipo('http');
+        scanListProvider.cargarScansPorTipo('http');
         return DireccionesPage();
       default:
         return MapasPage();
