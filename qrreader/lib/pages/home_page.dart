@@ -5,7 +5,7 @@ import 'package:qrreader/providers/db_provider.dart';
 import 'package:qrreader/providers/scan_list_provider.dart';
 import 'package:qrreader/providers/ui_provider.dart';
 import 'package:qrreader/widgets/widgets.dart';
-import 'package:qrreader/providers/scan_list_provider.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
