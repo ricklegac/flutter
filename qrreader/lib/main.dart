@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         routes: {
           'home':( _ ) =>  const HomePage(),
           'mapas': ( _ ) => const MapaPage(),
-          'direcciones': ( _ ) => const DireccionesPage(),
+          'direcciones': ( _ ) =>  const DireccionesPage(),
         },
         
         theme: ThemeData(
