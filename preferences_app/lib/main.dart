@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:preferences_app/provider/theme_provider.dart';
 import 'package:preferences_app/screens/home.dart';
 import 'package:preferences_app/screens/settings.dart';
 import 'package:preferences_app/shared_preferences/preferences.dart';
+import 'package:provider/provider.dart';
 
 
 void main() async { 
@@ -12,7 +14,14 @@ void main() async {
   
   await Preferences.init();
 
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_ ) => ThemeProvider(isDarkmode: Preferences.isDarkmode))
+      ],
+      child: const MyApp(),
+      )
+    );
 
 }
 
@@ -31,7 +40,7 @@ class MyApp extends StatelessWidget {
         HomeScreen.routerName       : ( _ ) => const HomeScreen(),
         SettingsScreen.routerName   : ( _ ) => const SettingsScreen(),
       },
-      theme: ThemeData.light(),
+      theme: Provider.of<ThemeProvider>(context).currentTheme,
     );
   }
 }
