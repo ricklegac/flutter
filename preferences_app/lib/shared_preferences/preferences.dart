@@ -30,4 +30,12 @@ class Preferences {
     _prefs.setBool('isDarkmode', isDarkmode);
   }
 
+  static int get gender{
+    return _prefs.getInt('gender') ?? _gender;
+  }
+  static set gender(int gender){
+    _gender = gender;
+    _prefs.setInt('gender', gender);
+  }
+
 }
