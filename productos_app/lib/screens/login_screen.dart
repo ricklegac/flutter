@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:productos_app/ui/input_decoration.dart';
 import 'package:productos_app/widgets/widgets.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -43,25 +44,15 @@ class _Formulario extends StatelessWidget {
           TextFormField(
             autocorrect: false,
             keyboardType: TextInputType.emailAddress,
-            decoration: const InputDecoration(
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.deepOrangeAccent)
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.deepOrangeAccent,
-                  width: 2,
-                ), 
-              ),
-              hintText: 'ejemplo@ejemplo.com',
-              labelText: 'Email',
-              labelStyle: TextStyle(
-                color: Colors.grey,
-              ),
-              prefixIcon: Icon(Icons.alternate_email, color: Colors.deepOrangeAccent)
-            ),
-            
-          )
+            decoration: InputDecorationHelper.authInputDecoration(hintText: 'ejemplo@ejemplo.com', labelText: 'ejemplo', icono: Icons.alternate_email_sharp), 
+          ),
+          const SizedBox(height: 30,),
+          TextFormField(
+            autocorrect: false,
+            obscureText: true,
+            keyboardType: TextInputType.visiblePassword,
+            decoration: InputDecorationHelper.authInputDecoration(hintText: 'password', labelText: 'password', icono: Icons.password), 
+          ),
         ],)
       )
     );
