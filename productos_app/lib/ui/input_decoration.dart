@@ -5,6 +5,10 @@ class InputDecorationHelper{ //metodos y propiedades estaticas
     required String hintText,
     required String labelText,
     IconData? icono, 
+    IconData? prefixIcon,
+    IconButton? suffixIcon,
+    bool obscureText = false,
+    
   }){
     return  InputDecoration(
       enabledBorder: const UnderlineInputBorder(
@@ -23,8 +27,7 @@ class InputDecorationHelper{ //metodos y propiedades estaticas
       prefixIcon: icono != null 
       ? Icon(icono, color: Colors.deepOrangeAccent) 
       :  null,
-        
+      suffixIcon: suffixIcon,
     );
-  }
-
-}
+  }    
+}  
