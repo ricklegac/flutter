@@ -25,12 +25,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 10,), 
                   Text('Login', style: Theme.of(context).textTheme.headline4),
                   const SizedBox(height: 10,),
-                  _Formulario(),   
+                  const _Formulario(),   
                 ],)
 
               ),
               const SizedBox(height: 20,),
-              const Text('prueba prueba preba ', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))
+              const Text('prueba prueba preba ', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 50,),
             ],),
           )
         )
@@ -86,9 +87,30 @@ class __FormularioState extends State<_Formulario> {
                 ),
               ),
             ),
+            const SizedBox(height: 30,),
+            MaterialButton(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              disabledColor: const Color.fromARGB(255, 34, 30, 30),
+              elevation: 0,
+              child:  Container(
+                
+                padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                color: Colors.deepOrangeAccent,
+                
+                child: const Text('Ingresar', 
+                style: TextStyle(color: Colors.white)
+                )
+              ),
+              onPressed: (){},
+
+
+            )
           ],
+          
         ),
+        
       ),
+      
     );
   }
 }
