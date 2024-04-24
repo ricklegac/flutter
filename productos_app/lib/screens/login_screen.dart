@@ -60,6 +60,8 @@ class __FormularioState extends State<_Formulario> {
   Widget build(BuildContext context) {
     return Container(
       child: Form(
+        // TODO: mantener referencia al Key
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         child: Column(
           children: [
             TextFormField(
@@ -70,6 +72,13 @@ class __FormularioState extends State<_Formulario> {
                 labelText: 'ejemplo',
                 icono: Icons.alternate_email_sharp,
               ), 
+              validator: (value) {
+                String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                RegExp regExp  = RegExp(pattern);
+                return regExp.hasMatch(value ?? '')
+                ? null
+                : 'el correo no es valido';               
+              },
             ),
             const SizedBox(height: 30,),
             TextFormField(
@@ -86,6 +95,18 @@ class __FormularioState extends State<_Formulario> {
                   icon: Icon(_isPasswordVisible ? Icons.visibility : Icons.visibility_off),
                 ),
               ),
+              validator: (value) {
+                RegExp regex =  RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                if (value!.isEmpty) {
+                  return 'Please enter password';
+                } else {
+                if (!regex.hasMatch(value)) {
+                  return 'Enter valid password';
+                } else {
+                  return null;
+                 }
+    }
+              },
             ),
             const SizedBox(height: 30,),
             MaterialButton(
@@ -94,7 +115,7 @@ class __FormularioState extends State<_Formulario> {
               elevation: 0,
               child:  Container(
                 
-                padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 color: Colors.deepOrangeAccent,
                 
                 child: const Text('Ingresar', 
