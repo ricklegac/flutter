@@ -123,21 +123,31 @@ class __FormularioState extends State<_Formulario> {
             const SizedBox(height: 30,),
             MaterialButton(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              disabledColor: const Color.fromARGB(255, 34, 30, 30),
+              disabledColor: Colors.grey,
               elevation: 0,
-              child:  Container(
+              color: Colors.deepOrangeAccent,
+              onPressed : loginForm.isLoading ? null : () async {
+                FocusScope.of(context).unfocus; // ocultar el teclado
+              
+                if(!loginForm.isValidForm()) return;
+                loginForm.isLoading = true;
+                await Future.delayed(const Duration(seconds: 2));
+                //TODO: validar el loading, en el backend 
+                loginForm.isLoading = false;
+                Navigator.pushReplacementNamed(context, 'home');
                 
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                color: Colors.deepOrangeAccent,
+
+              },
+              child:  SizedBox(
+                //padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                //color: Colors.deepOrangeAccent,
                 
-                child: const Text('Ingresar', 
-                style: TextStyle(color: Colors.white)
+                child:  Text(
+                  loginForm.isLoading ? 'Espere' : 'Ingresar', 
+                  style: const TextStyle(color: Colors.white)
                 )
               ),
-              onPressed: (){
-                if(!loginForm.isValidForm()) return;
-                Navigator.pushReplacementNamed(context, 'home');
-              },
+              
 
 
             )
