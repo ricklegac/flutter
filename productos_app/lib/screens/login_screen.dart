@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:productos_app/provider/login_form_provider.dart';
 import 'package:productos_app/ui/input_decoration.dart';
 import 'package:productos_app/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
    
@@ -25,7 +27,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 10,), 
                   Text('Login', style: Theme.of(context).textTheme.headline4),
                   const SizedBox(height: 10,),
-                  const _Formulario(),   
+                  ChangeNotifierProvider(
+                    create: ( _ ) => LoginFormProvider(),
+                    child: const _Formulario(),
+                  )
+                   
                 ],)
 
               ),
@@ -58,9 +64,13 @@ class __FormularioState extends State<_Formulario> {
 
   @override
   Widget build(BuildContext context) {
+
+    final loginForm = Provider.of<LoginFormProvider>(context); 
+
     return Container(
       child: Form(
         // TODO: mantener referencia al Key
+        key: loginForm.formKey, // asociamos el key 
         autovalidateMode: AutovalidateMode.onUserInteraction,
         child: Column(
           children: [
@@ -72,6 +82,7 @@ class __FormularioState extends State<_Formulario> {
                 labelText: 'ejemplo',
                 icono: Icons.alternate_email_sharp,
               ), 
+              onChanged: (value) => loginForm.email = value,
               validator: (value) {
                 String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
                 RegExp regExp  = RegExp(pattern);
@@ -95,6 +106,7 @@ class __FormularioState extends State<_Formulario> {
                   icon: Icon(_isPasswordVisible ? Icons.visibility : Icons.visibility_off),
                 ),
               ),
+              onChanged: (value) => loginForm.password = value ,
               validator: (value) {
                 RegExp regex =  RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
                 if (value!.isEmpty) {
@@ -122,7 +134,10 @@ class __FormularioState extends State<_Formulario> {
                 style: TextStyle(color: Colors.white)
                 )
               ),
-              onPressed: (){},
+              onPressed: (){
+                if(!loginForm.isValidForm()) return;
+                Navigator.pushReplacementNamed(context, 'home');
+              },
 
 
             )
