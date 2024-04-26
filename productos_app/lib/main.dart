@@ -19,7 +19,15 @@ class MyApp extends StatelessWidget {
       },
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: Colors.grey.shade300,
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          color: Colors.indigo),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: Colors.indigo,
+          elevation: 0,
+        )
       ),
+      
     );
   }
 }
