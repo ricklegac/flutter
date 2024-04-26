@@ -13,8 +13,10 @@ class ProductCard extends StatelessWidget {
         height: 400,
         decoration: _cardBorder(),
         child: Stack(
+          alignment: Alignment.bottomLeft,
           children: [
             _backgroundImage(),
+            _productDetails()
           ],
           
         )
@@ -38,21 +40,46 @@ class ProductCard extends StatelessWidget {
   }
 }
 
-class _backgroundImage extends StatelessWidget {
+class _productDetails extends StatelessWidget {
   
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity, 
-      height: 400,
-      color: Colors.red,
-      child: const  FadeInImage(
-        placeholder: AssetImage('assets/jar-loading.gif'),
-        image: NetworkImage('https://via.placeholder.com/400x300/f6f6f6'),
-        fit: BoxFit.cover,
+      width: double.infinity,
+      height: 70,
+      color: Colors.indigo,
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+        Text ('Cualquiera', 
+        style: TextStyle(fontSize: 20, color:Colors.white), 
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+        ),
+      ],)
+    );
+  }
+}
+
+class _backgroundImage extends StatelessWidget {
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect( 
+      borderRadius: BorderRadius.circular(25),
+      child: Container(
+        width: double.infinity, 
+        height: 400,
+        color: Colors.red,
+        child: const  FadeInImage(
+          placeholder: AssetImage('assets/jar-loading.gif'),
+          image: NetworkImage('https://via.placeholder.com/400x300/f6f6f6'),
+          fit: BoxFit.cover,
+         ),
+          
       ),
-        
     );
   }
 }
