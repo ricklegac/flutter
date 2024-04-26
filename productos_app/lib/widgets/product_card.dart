@@ -58,9 +58,10 @@ class _Unvailable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-
+      width: 100,
+      height: 30,
       decoration: const BoxDecoration(
-        color:Colors.indigo,
+        color:Colors.amber,
         borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomRight: Radius.circular(10))
       ),
       child: const FittedBox(
