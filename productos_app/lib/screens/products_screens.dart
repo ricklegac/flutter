@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:productos_app/widgets/widgets.dart';
-
+import 'package:productos_app/ui/input_decoration.dart';
 class ProductsScreen extends StatelessWidget {
    
   const ProductsScreen({Key? key}) : super(key: key);
@@ -61,7 +61,17 @@ class _productForm extends StatelessWidget {
             child: Column(children: [
               const SizedBox(height: 10,),
               TextFormField(
-
+                decoration: InputDecorationHelper.authInputDecoration(
+                  hintText: 'nombre del producto', 
+                  labelText: 'nombre'
+                 ),
+              ),
+              const SizedBox(height: 30,),
+              TextFormField(
+                decoration: InputDecorationHelper.authInputDecoration(
+                  hintText: 'precioo', 
+                  labelText: 'precio'
+                 ),
               ),
               const SizedBox(height: 30,),
             ],),
