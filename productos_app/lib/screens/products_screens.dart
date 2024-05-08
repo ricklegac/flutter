@@ -32,9 +32,16 @@ class ProductsScreen extends StatelessWidget {
             ],
 
           ),
-          _productForm(),
+          const _productForm(),
           const SizedBox(height: 100,),
          ],)
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.save_alt_outlined, color: Colors.white,),
+        onPressed: () {
+
+        },
       ),
     );
   }
@@ -68,14 +75,22 @@ class _productForm extends StatelessWidget {
               ),
               const SizedBox(height: 30,),
               TextFormField(
+                keyboardType: TextInputType.number,
                 decoration: InputDecorationHelper.authInputDecoration(
                   hintText: 'precioo', 
                   labelText: 'precio'
                  ),
               ),
               const SizedBox(height: 30,),
+              SwitchListTile(
+                value: true, 
+                title: const Text('Disponible'),
+                onChanged: (value){
+                //TODO: 
+              }),
             ],),
           ),
+          
     )
     );
   }
