@@ -13,10 +13,10 @@ class ProductService extends ChangeNotifier{
 
   //TODO hacer fetch de productos 
 
-  ProductService(){
-    this.loadProducts();
+  ProductService(){ // cuando el product service es llamado por primera vez va a llamar al load products
+    loadProducts();
   }
-  Future loadProducts() async{
+  Future loadProducts() async{ //load product hace la peticion, despues lo llevamos 
 
     final url = Uri.https(_baseUrl, 'products.json');
     final resp = await http.get(url);
