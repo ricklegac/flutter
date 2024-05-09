@@ -1,6 +1,6 @@
 // To parse this JSON data, do
 //
-//     final welcome = welcomeFromJson(jsonString);
+//     final products = productsFromJson(jsonString);
 
 import 'dart:convert';
 
@@ -13,6 +13,7 @@ class Products {
     String name;
     String? picture;
     double price;
+    String? id;
 
     Products({
         required this.available,
@@ -28,7 +29,7 @@ class Products {
         price: json["price"]?.toDouble(),
     );
 
-    Map<String, dynamic> toJson() => { //nos va a servir para mandar al servidor 
+    Map<String, dynamic> toJson() => {
         "available": available,
         "name": name,
         "picture": picture,

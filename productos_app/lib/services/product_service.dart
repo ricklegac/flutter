@@ -1,6 +1,7 @@
 //es el que se encarga de las peticiones https
 
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import  'package:productos_app/models/product.dart';
@@ -18,9 +19,23 @@ class ProductService extends ChangeNotifier{
   }
   Future loadProducts() async{ //load product hace la peticion, despues lo llevamos 
 
+    this.isLoading = true;
+    notifyListeners();
+
     final url = Uri.https(_baseUrl, 'products.json');
     final resp = await http.get(url);
     final Map<String, dynamic> productsMap = json.decode(resp.body); 
+    int i = 0;
+    productsMap.forEach((key,value) { // el key es id del producto y el value es todo el resto  
+      final tempProduct = Products.fromJson(value);
+      tempProduct.id = key;
+      products.add(tempProduct);
+      print("\n${products[i].name}");
+      i++;
+    });
+
+    this.isLoading = false;
+    notifyListeners();
     print(productsMap);
   }
 }
