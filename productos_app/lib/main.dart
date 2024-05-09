@@ -12,7 +12,7 @@ class AppState extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create:  ( _ ) => ProductService()),
+        ChangeNotifierProvider(create:  ( _ ) => ProductService(), lazy: true), //lazy true solo se ejecuta al llamar
       ],
       child: const MyApp(),
     );
