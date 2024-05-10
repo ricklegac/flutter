@@ -34,7 +34,7 @@ class ProductService extends ChangeNotifier{
       i++;
     });
 
-    this.isLoading = false;
+    // this.isLoading = false;
     notifyListeners();
     print(productsMap);
   }
