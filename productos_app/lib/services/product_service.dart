@@ -1,10 +1,7 @@
 //es el que se encarga de las peticiones https
-
-import 'dart:convert';
-import 'dart:ffi';
-
-import 'package:flutter/material.dart';
 import  'package:productos_app/models/product.dart';
+import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 class ProductService extends ChangeNotifier{
   final String _baseUrl = 'flutter-varios-ad03d-default-rtdb.firebaseio.com';
@@ -19,7 +16,7 @@ class ProductService extends ChangeNotifier{
   }
   Future loadProducts() async{ //load product hace la peticion, despues lo llevamos 
 
-    this.isLoading = true;
+    isLoading = true;
     notifyListeners();
 
     final url = Uri.https(_baseUrl, 'products.json');
