@@ -20,6 +20,7 @@ class Products {
         required this.name,
         this.picture,
         required this.price,
+        this.id,
     });
 
     factory Products.fromJson(Map<String, dynamic> json) => Products(
@@ -35,4 +36,12 @@ class Products {
         "picture": picture,
         "price": price,
     };
+
+    Products copy() => Products(
+      available: available, 
+      name: name, 
+      picture: picture,
+      price: price,
+      id: id,
+      );
 }

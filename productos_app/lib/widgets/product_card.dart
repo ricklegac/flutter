@@ -169,7 +169,7 @@ class _BackgroundImage extends StatelessWidget {
         color: Colors.red,
         child:  FadeInImage(
           placeholder: const AssetImage('assets/jar-loading.gif'),
-          image: NetworkImage(url ?? ''),
+          image: NetworkImage(url ?? 'https://www.nepmeds.com.np/public/840-840/files/CF29314BB5534F0-no-image.jpg'),
           fit: BoxFit.cover,
          ),
           
