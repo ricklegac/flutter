@@ -102,7 +102,7 @@ class _productForm extends StatelessWidget {
                   product.name = value,
                 },
                 validator: (value){
-                  if(value == null || value.length<1){
+                  if(value == null || value.isEmpty){
                     return "El nombre es obligatorio";
                   }
                 },
